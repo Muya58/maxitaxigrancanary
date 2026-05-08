@@ -749,13 +749,13 @@ export default function App() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {[
-                        { name: "Maspalomas", img: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&q=80&w=800" },
-          { name: "Las Palmas", img: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=800" },
-          { name: "Puerto Rico", img: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=800" },
-          { name: "Meloneras", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800" },
-          { name: "Arucas", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800" },
-          { name: "Agaete", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800" },
-          { name: "Mogán", img: "https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&q=80&w=800" }
+                                  { name: "Maspalomas", img: "/maspalomas.jpg" },
+          { name: "Las Palmas", img: "/laspalmas.jpg" },
+          { name: "Puerto Rico", img: "/puertorico.jpg" },
+          { name: "Meloneras", img: "/meloneras.jpg" },
+          { name: "Arucas", img: "/arucas.jpg" },
+          { name: "Agaete", img: "/agaete.jpg" },
+          { name: "Mogán", img: "/mogan.jpg" }
 
             ].map((loc, i) => (
               <motion.div 
