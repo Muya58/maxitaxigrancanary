@@ -749,13 +749,13 @@ export default function App() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {[
-              { name: "Maspalomas", img: "input_file_0.png", alt: "Traslado en taxi a Maspalomas, Gran Canaria - Dunas y Hoteles" },
-              { name: "Las Palmas", img: "input_file_1.png", alt: "Transfer a Las Palmas de Gran Canaria - Capital y Puerto" },
-              { name: "Puerto Rico", img: "input_file_2.png", alt: "Taxi a Puerto Rico Gran Canaria - Playa y Ocio" },
-              { name: "Meloneras", img: "input_file_3.png", alt: "Servicio Premium a Meloneras - Hoteles de Lujo" },
-              { name: "Arucas", img: "input_file_4.png", alt: "Transfer a Arucas Gran Canaria - Iglesia y Casco Histórico" },
-              { name: "Agaete", img: "input_file_5.png", alt: "Traslado a Agaete - Puerto de las Nieves" },
-              { name: "Mogán", img: "input_file_6.png", alt: "Taxi a Puerto de Mogán - La Venecia de Canarias" },
+              { name: "Maspalomas", img: https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&q=80&w=800, alt: "Traslado en taxi a Maspalomas, Gran Canaria - Dunas y Hoteles" },
+              { name: "Las Palmas", img: https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=800, alt: "Transfer a Las Palmas de Gran Canaria - Capital y Puerto" },
+              { name: "Puerto Rico", img: https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=800, alt: "Taxi a Puerto Rico Gran Canaria - Playa y Ocio" },
+              { name: "Meloneras", img: https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800, alt: "Servicio Premium a Meloneras - Hoteles de Lujo" },
+              { name: "Arucas", img: https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800, alt: "Transfer a Arucas Gran Canaria - Iglesia y Casco Histórico" },
+              { name: "Agaete", img: https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800, alt: "Traslado a Agaete - Puerto de las Nieves" },
+              { name: "Mogán", img: https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&q=80&w=800, alt: "Taxi a Puerto de Mogán - La Venecia de Canarias" },
             ].map((loc, i) => (
               <motion.div 
                 key={i}
