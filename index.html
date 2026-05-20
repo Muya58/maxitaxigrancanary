@@ -1,57 +1,14 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
+    <!--ssr-head-->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MaxiTaxi Gran Canaria | Traslados de Lujo y Aeropuerto 24/7</title>
-    <meta name="description" content="Reserva traslados exclusivos en Gran Canaria con MaxiTaxi. Líderes en transfers al aeropuerto, servicio para grupos de hasta 8 personas y excursiones personalizadas. Atención 24/7 vía WhatsApp y Email." />
-    <meta name="keywords" content="taxi gran canaria, transfer aeropuerto gran canaria, maxi taxi las palmas, traslados privados maspalomas, luxury transfer canaries, taxi grupos 8 personas gran canaria, traslados meloneras, transfer mogan, transport gran canaria groups" />
-    <link rel="canonical" href="https://www.maxitaxigrancanary.com" />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="MaxiTaxi Gran Canaria | Traslados de Lujo y Aeropuerto" />
-    <meta property="og:description" content="Servicio de taxi de alta capacidad y traslados VIP en Gran Canaria. Reserva online con confirmación inmediata." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.maxitaxigrancanary.com" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1544837581-22920253457a?auto=format&fit=crop&q=80&w=1200" />
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MaxiTaxi Gran Canaria | Transfers VIP" />
-    <meta name="twitter:description" content="Reserva traslados al aeropuerto y excursiones privadas en Gran Canaria. Taxi para grupos (8 pax)." />
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1544837581-22920253457a?auto=format&fit=crop&q=80&w=1200" />
-
-    <!-- Geo Tags -->
-    <meta name="geo.region" content="ES-CN" />
-    <meta name="geo.placename" content="Gran Canaria" />
-    <meta name="geo.position" content="27.92;-15.54" />
-    <meta name="ICBM" content="27.92, -15.54" />
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚖</text></svg>" />
-        <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y77LF2ZRGW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-Y77LF2ZRGW');
-      gtag('config', 'GT-5MC6RWN9');
-    </script>
+    <title>MaxiTaxi Gran Canaria</title>
   </head>
   <body>
-        <div id="root">
-      <!-- SEO Skeleton: Google leerá esto al instante -->
-      <div style="min-height: 100vh; background-color: #0B0F19; color: white; padding: 2rem; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-        <h1 style="font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: #facc15;">MaxiTaxi Gran Canaria</h1>
-        <h2 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">Traslados de Lujo, Aeropuerto y Grupos (8 Plazas)</h2>
-        <p style="color: #94a3b8; max-width: 600px; line-height: 1.6;">
-          Cargando el servicio oficial de traslados en Gran Canaria. Reserva instantánea 24/7 vía WhatsApp para Aeropuerto, Maspalomas, Las Palmas, Meloneras, Mogán y más...
-        </p>
-      </div>
-    </div>
-
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="root"><!--ssr-outlet--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>
 
