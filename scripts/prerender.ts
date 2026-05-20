@@ -6,7 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbsolute = (p: string) => path.resolve(__dirname, '..', p);
 
 async function prerender() {
-  const templatePath = toAbsolute('dist/client/index.html');
+  const templatePath = toAbsolute('dist/index.html');
   
   if (!fs.existsSync(templatePath)) {
     console.error('Template not found at:', templatePath);
@@ -31,7 +31,7 @@ async function prerender() {
       .replace(`<!--ssr-head-->`, head);
 
     // Save final HTML
-    fs.writeFileSync(toAbsolute('dist/client/index.html'), htmlWithContent);
+    fs.writeFileSync(toAbsolute('dist/index.html'), htmlWithContent);
     console.log('Prerendering completed successfully.');
   } catch (err) {
     console.error('Error during prerendering:', err);

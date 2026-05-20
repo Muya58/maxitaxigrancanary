@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build --outDir dist/client && vite build --ssr src/entry-server.tsx --outDir dist/server && tsx scripts/prerender.ts",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && tsx scripts/prerender.ts && node -e \"fs.rmSync('dist/server', {recursive:true, force:true})\"",
     "preview": "vite preview",
-    "clean": "rm -rf dist",
+    "clean": "node -e \"fs.rmSync('dist', {recursive:true, force:true})\"",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
