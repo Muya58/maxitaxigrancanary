@@ -1,6 +1,5 @@
 {
-  "name": "MaxiTaxiGranCanary",
-  "description": "Servicio premium de traslados y taxi de lujo en Gran Canaria. Líderes en transfers al aeropuerto, grupos hasta 8 personas y excursiones personalizadas. Atención 24/7.",
-  "requestFramePermissions": [],
-  "majorCapabilities": []
+  "name": "MaxiTaxiGran Canary",
+  "description": "Servicio premium de taxi y traslados privados en Gran Canaria. Especialistas en vehículos de 8 plazas, PMR y transporte de bicicletas.",
+  "requestFramePermissions": ["geolocation"]
 }
