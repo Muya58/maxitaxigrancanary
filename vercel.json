@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/services-store/:match*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/appointments",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/p/:match*",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
