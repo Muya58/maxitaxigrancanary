@@ -1,35 +1,60 @@
 export default function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).end();
   
-  const { pickupAddress, destinationAddress } = req.body;
+  const { pickupAddress, destinationAddress, dateTime } = req.body;
   const dest = (destinationAddress || "").toLowerCase();
+  const origin = (pickupAddress || "").toLowerCase();
 
-  // 1. Establecemos un precio y distancia base por defecto
-  let basePrice = 40; 
+  // 1. Determinar Distancia base (km) y tiempo estimado (mins)
   let distance = 30;
   let duration = 25;
 
-  // 2. Lógica sencilla de zonas (puedes ajustar los precios y nombres)
-  if (dest.includes("maspalomas") || dest.includes("meloneras")) {
-     basePrice = 45; 
-     distance = 32; 
-     duration = 28;
-  } else if (dest.includes("mogan") || dest.includes("puerto rico") || dest.includes("amadores")) {
-     basePrice = 65; 
-     distance = 48; 
-     duration = 40;
-  } else if (dest.includes("las palmas") || dest.includes("capital")) {
-     basePrice = 35; 
-     distance = 25; 
-     duration = 20;
-  } else if (dest.includes("agaete")) {
-     basePrice = 75;
-     distance = 55;
-     duration = 50;
+  const loc = dest.includes("aeropuerto") || dest.includes("lpa") ? origin : dest;
+
+  if (loc.includes("maspalomas") || loc.includes("meloneras") || loc.includes("playa del ingles")) {
+     distance = 32; duration = 28;
+  } else if (loc.includes("mogan") || loc.includes("amadores") || loc.includes("taurito")) {
+     distance = 47; duration = 40;
+  } else if (loc.includes("puerto rico") || loc.includes("arguineguin")) {
+     distance = 42; duration = 35;
+  } else if (loc.includes("las palmas") || loc.includes("capital")) {
+     distance = 25; duration = 20;
+  } else if (loc.includes("agaete") || loc.includes("puerto de las nieves")) {
+     distance = 55; duration = 50;
+  } else if (loc.includes("arucas")) {
+     distance = 35; duration = 30;
+  } else if (loc.includes("telde")) {
+     distance = 15; duration = 15;
+  } else if (loc.includes("galdar") || loc.includes("guia")) {
+     distance = 50; duration = 45;
   }
 
-  // 3. Aplicamos la comisión exacta del 10%
-  // Math.round asegura que no salgan decimales raros (ej: 49.50 -> 50€)
+  // 2. Determinar Tarifa (Diurna o Nocturna/Festiva)
+  // Horario nocturno oficial: 22:00 a 06:00
+  let isNight = false;
+  if (dateTime) {
+    const dateObj = new Date(dateTime);
+    const hour = dateObj.getHours();
+    if (hour >= 22 || hour < 6) {
+      isNight = true;
+    }
+  }
+
+  const ratePerKm = isNight ? 1.55 : 1.35;
+  const airportSupplement = 2.10;
+
+  // Calculamos el precio base oficial del Cabildo
+  let officialPrice = (distance * ratePerKm);
+  
+  // Añadimos suplemento de aeropuerto si aplica
+  if (origin.includes("aeropuerto") || dest.includes("aeropuerto") || origin.includes("lpa") || dest.includes("lpa")) {
+    officialPrice += airportSupplement;
+  }
+
+  // Redondeamos el precio oficial (ej. 45.30 -> 45)
+  let basePrice = Math.round(officialPrice);
+
+  // 3. Aplicamos la comisión del 10% para la plataforma web
   const finalPrice = Math.round(basePrice * 1.10);
 
   // 4. Devolvemos los datos a la web

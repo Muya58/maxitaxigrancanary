@@ -903,7 +903,7 @@ export default function App() {
               href="https://t.me/Maxitaxigrancanaria"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#0088cc] text-white p-4 rounded-full shadow-2xl shadow-[#0088cc]/40 hover:bg-[#0077b3] transition-all group relative flex items-center justify-center"
+              className="bg-[#0088cc] text-white p-4 rounded-full shadow-2xl shadow-[#0088cc]/40 hover:bg-[#0077b3] transition-all group relative flex items-center justify-center animate-bounce"
             >
               <Send className="h-8 w-8 ml-1" />
               <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-gray-900 px-4 py-2 rounded-xl text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-100">
@@ -920,7 +920,7 @@ export default function App() {
               href="https://wa.me/34619735892"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-500 text-white p-4 rounded-full shadow-2xl shadow-green-500/40 hover:bg-green-600 transition-all group relative flex items-center justify-center"
+              className="bg-green-500 text-white p-4 rounded-full shadow-2xl shadow-green-500/40 hover:bg-green-600 transition-all group relative flex items-center justify-center animate-bounce"
             >
               <MessageCircle className="h-8 w-8" />
               <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-gray-900 px-4 py-2 rounded-xl text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-100">
