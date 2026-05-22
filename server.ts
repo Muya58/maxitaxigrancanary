@@ -3,6 +3,8 @@ import { createServer as createViteServer } from "vite";
 import path from "path";
 import { Resend } from "resend";
 import dotenv from "dotenv";
+import calculateHandler from "./api/calculate.js";
+import reservationsHandler from "./api/reservations.js";
 
 dotenv.config();
 
@@ -120,12 +122,10 @@ async function startServer() {
 
   // API Routes
   app.post("/api/calculate", async (req, res) => {
-    const calculateHandler = (await import("./api/calculate.js")).default;
     await calculateHandler(req, res);
   });
 
   app.post("/api/reservations", async (req, res) => {
-    const reservationsHandler = (await import("./api/reservations.js")).default;
     await reservationsHandler(req, res);
   });
 
