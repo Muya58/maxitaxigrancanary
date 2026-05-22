@@ -1,4 +1,4 @@
-import axios from "axios";
+
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).end();
@@ -86,35 +86,41 @@ export default async function handler(req: any, res: any) {
         `📉 *Comisión (10%):* ${comision}€\n\n` +
         `Por favor, confirma la recepción.`;
 
-      await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        chat_id: chatId, 
-        text: message, 
-        parse_mode: "Markdown",
-        disable_web_page_preview: true // Evita que salgan fotos gigantes de los mapas
+      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId, 
+          text: message, 
+          parse_mode: "Markdown",
+          disable_web_page_preview: true
+        })
       }).catch(err => console.error("Error Telegram"));
     }
 
     // 4. Conexión a Google Sheets
     const scriptUrl = process.env.GOOGLE_SHEETS_SCRIPT_URL;
     if (scriptUrl) {
-      await axios.post(scriptUrl, {
-        id: `RES-${resID}`,
-        date_created: new Date().toISOString(),
-        name: payload.clientName,
-        email: payload.clientEmail,
-        phone: payload.clientPhone,
-        pickup: payload.pickupAddress,
-        destination: payload.destinationAddress,
-        date: payload.dateTime,
-        time: payload.dateTime, // Combined in form
-        passengers: "N/A", // Not in form
-        specialRequests: payload.clientMunicipality || "",
-        estimatedPrice: precioTotal,
-        estimatedTime: duration,
-        commission: comision,
-        net: (precioTotal - parseFloat(comision)).toFixed(2)
-      }, {
-        headers: { 'Content-Type': 'application/json' }
+      await fetch(scriptUrl, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: `RES-${resID}`,
+          date_created: new Date().toISOString(),
+          name: payload.clientName,
+          email: payload.clientEmail,
+          phone: payload.clientPhone,
+          pickup: payload.pickupAddress,
+          destination: payload.destinationAddress,
+          date: payload.dateTime,
+          time: payload.dateTime, // Combined in form
+          passengers: "N/A", // Not in form
+          specialRequests: payload.clientMunicipality || "",
+          estimatedPrice: precioTotal,
+          estimatedTime: duration,
+          commission: comision,
+          net: (precioTotal - parseFloat(comision)).toFixed(2)
+        })
       }).catch(err => console.error("Error Sheets"));
     }
 
