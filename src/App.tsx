@@ -673,8 +673,8 @@ export default function App() {
 
           <div className="grid md:grid-cols-3 gap-8 text-left">
             {[
-              { img: "/images/bg-catedral.jpg", icon: Users, title: "Taxi 8 Plazas Gran Canaria", desc: "Vehículos Maxi de gran capacidad. Perfecto para traslados de familias, grupos de amigos y equipaje voluminoso como tablas de surf.", blur: true },
-              { img: "/images/bg-catedral-taxi.jpg", icon: Clock, title: "Transfer Aeropuerto 24h", desc: "Servicio ininterrumpido en el Aeropuerto de Gran Canaria (LPA). Monitorizamos tu vuelo para recogidas puntuales sin esperas.", blur: true },
+              { img: "/images/maxitaxi-2.jpg", icon: Users, title: "Taxi 8 Plazas Gran Canaria", desc: "Vehículos Maxi de gran capacidad. Perfecto para traslados de familias, grupos de amigos y equipaje voluminoso como tablas de surf." },
+              { img: "/images/maxitaxi-1.jpg", icon: Clock, title: "Transfer Aeropuerto 24h", desc: "Servicio ininterrumpido en el Aeropuerto de Gran Canaria (LPA). Monitorizamos tu vuelo para recogidas puntuales sin esperas." },
               { img: "/images/maxitaxi-3.jpg", icon: ShieldCheck, title: "Transporte Oficial Seguro", desc: "Conductores profesionales con licencia oficial y vehículos modernos. Tu seguridad en los traslados es nuestra prioridad." }
             ].map((feature, i) => (
               <div key={i} className="group card-geometric p-8 rounded-[2.5rem] hover:border-brand/40 transition-all duration-500 flex flex-col">
@@ -682,7 +682,7 @@ export default function App() {
                   <img 
                     src={feature.img} 
                     alt={feature.title} 
-                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${feature.blur ? 'blur-[2px] opacity-90' : ''}`} 
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                   />
                   <div className="absolute inset-0 bg-ink/30 group-hover:bg-transparent transition-colors duration-500" />
                   <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-bg-deep rounded-tl-3xl flex items-center justify-center">
