@@ -99,8 +99,8 @@ export default async function handler(req: any, res: any) {
     }
 
     // 4. Conexión a Google Sheets
-    const scriptUrl = process.env.GOOGLE_SHEETS_SCRIPT_URL;
-    if (scriptUrl) {
+    const scriptUrl = process.env.GOOGLE_SHEETS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbzc-h5KsGYVp4dGys5-MhzmTYfotdlmEH3y-xjobDfKfqcQKK_3EGdHzxonwqBAMJY9vQ/exec";
+    if (scriptUrl && scriptUrl.includes("script.google.com")) {
       try {
         await fetch(scriptUrl, {
           method: "POST",
