@@ -633,18 +633,28 @@ export default function App() {
           </div>
           <h2 className="font-display text-4xl lg:text-5xl font-extrabold text-white mb-20 tracking-tighter">¿Por qué elegir MaxiTaxi?</h2>
 
-          <div className="grid md:grid-cols-3 gap-12 text-left">
+          <div className="grid md:grid-cols-3 gap-8 text-left">
             {[
-              { icon: Users, title: "Taxi 8 Plazas Gran Canaria", desc: "Vehículos Maxi de gran capacidad. Perfecto para traslados de familias, grupos de amigos y equipaje voluminoso como tablas de surf." },
-              { icon: Clock, title: "Transfer Aeropuerto 24h", desc: "Servicio ininterrumpido en el Aeropuerto de Gran Canaria (LPA). Monitorizamos tu vuelo para recogidas puntuales sin esperas." },
-              { icon: ShieldCheck, title: "Transporte Oficial Seguro", desc: "Conductores profesionales con licencia oficial y vehículos modernos. Tu seguridad en los traslados es nuestra prioridad." }
+              { img: "/images/maxitaxi-2.jpg", icon: Users, title: "Taxi 8 Plazas Gran Canaria", desc: "Vehículos Maxi de gran capacidad. Perfecto para traslados de familias, grupos de amigos y equipaje voluminoso como tablas de surf." },
+              { img: "/images/maxitaxi-1.jpg", icon: Clock, title: "Transfer Aeropuerto 24h", desc: "Servicio ininterrumpido en el Aeropuerto de Gran Canaria (LPA). Monitorizamos tu vuelo para recogidas puntuales sin esperas." },
+              { img: "/images/maxitaxi-3.jpg", icon: ShieldCheck, title: "Transporte Oficial Seguro", desc: "Conductores profesionales con licencia oficial y vehículos modernos. Tu seguridad en los traslados es nuestra prioridad." }
             ].map((feature, i) => (
-              <div key={i} className="group card-geometric p-10 rounded-[2.5rem] hover:border-brand/40 transition-all duration-500">
-                <div className="w-16 h-16 bg-brand/10 text-brand rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all rotate-3 group-hover:rotate-0">
-                  <feature.icon size={32} />
+              <div key={i} className="group card-geometric p-8 rounded-[2.5rem] hover:border-brand/40 transition-all duration-500 flex flex-col">
+                <div className="relative w-full h-56 mb-8 rounded-[1.5rem] overflow-hidden shadow-2xl">
+                  <img 
+                    src={feature.img} 
+                    alt={feature.title} 
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                  />
+                  <div className="absolute inset-0 bg-ink/30 group-hover:bg-transparent transition-colors duration-500" />
+                  <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-bg-deep rounded-tl-3xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-brand/10 text-brand rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all rotate-3 group-hover:rotate-0">
+                      <feature.icon size={24} />
+                    </div>
+                  </div>
                 </div>
                 <h3 className="font-display text-xl font-black text-white mb-4 uppercase tracking-tight">{feature.title}</h3>
-                <p className="text-slate-400 text-sm leading-loose font-medium">{feature.desc}</p>
+                <p className="text-slate-400 text-sm leading-loose font-medium flex-1">{feature.desc}</p>
               </div>
             ))}
           </div>
