@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).end();
   const payload = req.body;
@@ -134,8 +133,9 @@ export default async function handler(req: any, res: any) {
     // 5. Enviar Email de confirmación al cliente
     const fromAddress = process.env.RESEND_SENDER || 'bookings@maxitaxigrancanary.com';
     let emailSent = false;
-    if (payload.clientEmail) {
+    if (payload.clientEmail && process.env.RESEND_API_KEY) {
       try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
         await resend.emails.send({
           from: fromAddress,
           to: payload.clientEmail,
@@ -163,6 +163,8 @@ export default async function handler(req: any, res: any) {
       } catch (err) {
         console.error("Error enviando email al cliente:", err);
       }
+    } else if (payload.clientEmail) {
+      console.warn("No se pudo enviar el email porque falta RESEND_API_KEY en las variables de entorno");
     }
 
     res.status(200).json({ success: true, message: "Reserva procesada correctamente", emailSent });
