@@ -57,8 +57,12 @@ export default async function handler(req: any, res: any) {
     const mapDestino = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(payload.destinationAddress)}`;
     const mapRuta = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(payload.pickupAddress)}&destination=${encodeURIComponent(payload.destinationAddress)}`;
     
-    // Generar un ID de reserva aleatorio (#RES-XXX)
-    const resID = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+    // Generar un ID de reserva pseudo-correlativo (DíaHora+Random)
+    const now = new Date();
+    const dayStr = now.getDate().toString().padStart(2, '0');
+    const hourStr = now.getHours().toString().padStart(2, '0');
+    const randDigits = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+    const resID = `${dayStr}${hourStr}${randDigits}`;
 
     // Link a WhatsApp del cliente
     const rawPhone = payload.clientPhone || "";
@@ -97,25 +101,32 @@ export default async function handler(req: any, res: any) {
     // 4. Conexión a Google Sheets
     const scriptUrl = process.env.GOOGLE_SHEETS_SCRIPT_URL;
     if (scriptUrl) {
-      await axios.post(scriptUrl, {
-        id: `RES-${resID}`,
-        date_created: new Date().toISOString(),
-        name: payload.clientName,
-        email: payload.clientEmail,
-        phone: payload.clientPhone,
-        pickup: payload.pickupAddress,
-        destination: payload.destinationAddress,
-        date: payload.dateTime,
-        time: payload.dateTime, // Combined in form
-        passengers: "N/A", // Not in form
-        specialRequests: payload.clientMunicipality || "",
-        estimatedPrice: precioTotal,
-        estimatedTime: duration,
-        commission: comision,
-        net: (precioTotal - parseFloat(comision)).toFixed(2)
-      }, {
-        headers: { 'Content-Type': 'application/json' }
-      }).catch(err => console.error("Error Sheets"));
+      try {
+        await fetch(scriptUrl, {
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: `RES-${resID}`,
+            date_created: new Date().toISOString(),
+            name: payload.clientName,
+            email: payload.clientEmail,
+            phone: payload.clientPhone,
+            pickup: payload.pickupAddress,
+            destination: payload.destinationAddress,
+            date: payload.dateTime,
+            time: payload.dateTime,
+            passengers: "N/A",
+            specialRequests: payload.clientMunicipality || "",
+            estimatedPrice: precioTotal,
+            estimatedTime: duration,
+            commission: comision,
+            net: (precioTotal - parseFloat(comision)).toFixed(2)
+          }),
+          redirect: 'follow'
+        });
+      } catch (err) {
+        console.error("Error Sheets", err);
+      }
     }
 
     res.status(200).json({ success: true, message: "Reserva procesada correctamente" });
