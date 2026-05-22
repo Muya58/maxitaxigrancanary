@@ -1,5 +1,7 @@
 import axios from "axios";
+import { Resend } from "resend";
 
+const resend = new Resend(process.env.RESEND_API_KEY);
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).end();
   const payload = req.body;
@@ -129,7 +131,41 @@ export default async function handler(req: any, res: any) {
       }
     }
 
-    res.status(200).json({ success: true, message: "Reserva procesada correctamente" });
+    // 5. Enviar Email de confirmación al cliente
+    const fromAddress = process.env.RESEND_SENDER || 'bookings@maxitaxigrancanary.com';
+    let emailSent = false;
+    if (payload.clientEmail) {
+      try {
+        await resend.emails.send({
+          from: fromAddress,
+          to: payload.clientEmail,
+          subject: `Confirmación de Reserva #${resID} - MaxiTaxi Gran Canaria`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+              <h2 style="color: #eab308;">¡Reserva Confirmada!</h2>
+              <p>Hola ${payload.clientName}, hemos recibido tu solicitud de reserva de traslado.</p>
+              
+              <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                <p><strong>ID Reserva:</strong> #RES-${resID}</p>
+                <p><strong>Fecha y Hora:</strong> ${payload.dateTime}</p>
+                <p><strong>Recogida:</strong> ${payload.pickupAddress}</p>
+                <p><strong>Destino:</strong> ${payload.destinationAddress}</p>
+                <p><strong>Precio Estimado:</strong> ${precioTotal}€</p>
+              </div>
+
+              <p>Un conductor se pondrá en contacto contigo a través de WhatsApp para confirmar los detalles finales y el punto de encuentro exacto.</p>
+              <br>
+              <p>Gracias por confiar en <strong>MaxiTaxi Gran Canaria</strong>.</p>
+            </div>
+          `
+        });
+        emailSent = true;
+      } catch (err) {
+        console.error("Error enviando email al cliente:", err);
+      }
+    }
+
+    res.status(200).json({ success: true, message: "Reserva procesada correctamente", emailSent });
   } catch (error) {
     console.error("Error en el servidor:", error);
     res.status(500).json({ success: false, error: "Error interno al procesar la reserva" });
