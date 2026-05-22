@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -153,6 +154,32 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bg-deep selection:bg-brand/30">
+      <Helmet>
+        <title>MaxiTaxi Gran Canaria | Traslados al Aeropuerto 24h</title>
+        <meta name="description" content="Reserva tu MaxiTaxi en Gran Canaria. Vehículos de 8 plazas, traslados directos al aeropuerto (LPA), Maspalomas y Las Palmas. Precio cerrado y sin esperas." />
+        <meta property="og:title" content="MaxiTaxi Gran Canaria | Traslados 24h" />
+        <meta property="og:description" content="Reserva tu MaxiTaxi de 8 plazas en Gran Canaria. Traslados directos al aeropuerto, Maspalomas y más." />
+        <meta property="og:image" content="https://www.maxitaxigrancanary.com/images/bg-catedral-taxi.jpg" />
+        <meta property="og:url" content="https://www.maxitaxigrancanary.com" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "TaxiService",
+              "name": "MaxiTaxi Gran Canaria",
+              "image": "https://www.maxitaxigrancanary.com/images/bg-catedral-taxi.jpg",
+              "telephone": "+34619735892",
+              "url": "https://www.maxitaxigrancanary.com",
+              "areaServed": {
+                "@type": "State",
+                "name": "Las Palmas"
+              },
+              "priceRange": "$$"
+            }
+          `}
+        </script>
+      </Helmet>
       {/* Navigation */}
       <nav 
         className={`fixed top-0 w-full z-100 transition-all duration-500 ${
@@ -646,8 +673,8 @@ export default function App() {
 
           <div className="grid md:grid-cols-3 gap-8 text-left">
             {[
-              { img: "/images/maxitaxi-2.jpg", icon: Users, title: "Taxi 8 Plazas Gran Canaria", desc: "Vehículos Maxi de gran capacidad. Perfecto para traslados de familias, grupos de amigos y equipaje voluminoso como tablas de surf." },
-              { img: "/images/maxitaxi-1.jpg", icon: Clock, title: "Transfer Aeropuerto 24h", desc: "Servicio ininterrumpido en el Aeropuerto de Gran Canaria (LPA). Monitorizamos tu vuelo para recogidas puntuales sin esperas." },
+              { img: "/images/bg-catedral.jpg", icon: Users, title: "Taxi 8 Plazas Gran Canaria", desc: "Vehículos Maxi de gran capacidad. Perfecto para traslados de familias, grupos de amigos y equipaje voluminoso como tablas de surf.", blur: true },
+              { img: "/images/bg-catedral-taxi.jpg", icon: Clock, title: "Transfer Aeropuerto 24h", desc: "Servicio ininterrumpido en el Aeropuerto de Gran Canaria (LPA). Monitorizamos tu vuelo para recogidas puntuales sin esperas.", blur: true },
               { img: "/images/maxitaxi-3.jpg", icon: ShieldCheck, title: "Transporte Oficial Seguro", desc: "Conductores profesionales con licencia oficial y vehículos modernos. Tu seguridad en los traslados es nuestra prioridad." }
             ].map((feature, i) => (
               <div key={i} className="group card-geometric p-8 rounded-[2.5rem] hover:border-brand/40 transition-all duration-500 flex flex-col">
@@ -655,7 +682,7 @@ export default function App() {
                   <img 
                     src={feature.img} 
                     alt={feature.title} 
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${feature.blur ? 'blur-[2px] opacity-90' : ''}`} 
                   />
                   <div className="absolute inset-0 bg-ink/30 group-hover:bg-transparent transition-colors duration-500" />
                   <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-bg-deep rounded-tl-3xl flex items-center justify-center">
