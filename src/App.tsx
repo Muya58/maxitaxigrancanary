@@ -626,8 +626,19 @@ export default function App() {
       </main>
 
       {/* Services Grid with Geometric Dark style */}
-      <section id="servicios" className="py-32 bg-bg-deep border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+      <section id="servicios" className="relative py-32 border-t border-white/5 overflow-hidden">
+        {/* Blurred Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img 
+            src="/images/bg-catedral-taxi.jpg" 
+            alt="MaxiTaxi Background" 
+            className="w-full h-full object-cover opacity-30 blur-sm scale-105"
+          />
+          <div className="absolute inset-0 bg-ink/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink opacity-90" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-block px-3 py-1 bg-brand/5 text-brand text-[10px] font-black uppercase tracking-[0.2em] mb-4 rounded-sm">
             Nuestra Excelencia
           </div>
