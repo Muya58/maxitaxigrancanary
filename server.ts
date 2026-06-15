@@ -20,9 +20,13 @@ function escapeHtml(text: string) {
 
 async function sendTelegramMessage(text: string, photoUrl?: string) {
   const rawToken = process.env.TELEGRAM_BOT_TOKEN?.trim();
-  const chatId = process.env.TELEGRAM_CHAT_ID?.trim();
-  
-  if (!rawToken || !chatId) {
+  // Soporta varios destinatarios: separa los IDs por coma. Ej: "7163120443,123456789"
+  const chatIds = (process.env.TELEGRAM_CHAT_ID || "")
+    .split(",")
+    .map((id) => id.trim())
+    .filter(Boolean);
+
+  if (!rawToken || chatIds.length === 0) {
     console.warn("Telegram configuration missing (Token or Chat ID). Skipping Telegram notification.");
     return;
   }
@@ -57,27 +61,29 @@ async function sendTelegramMessage(text: string, photoUrl?: string) {
   };
 
   try {
-    if (photoUrl) {
-      try {
-        await send("sendPhoto", {
-          chat_id: chatId,
-          photo: photoUrl,
-          caption: text,
-          parse_mode: "HTML"
-        });
-        console.log("Telegram notification (photo) sent successfully");
-        return;
-      } catch (photoErr) {
-        console.warn("Telegram sendPhoto failed, falling back to sendMessage:", photoErr instanceof Error ? photoErr.message : photoErr);
+    for (const chatId of chatIds) {
+      if (photoUrl) {
+        try {
+          await send("sendPhoto", {
+            chat_id: chatId,
+            photo: photoUrl,
+            caption: text,
+            parse_mode: "HTML"
+          });
+          console.log(`Telegram notification (photo) sent successfully to ${chatId}`);
+          continue;
+        } catch (photoErr) {
+          console.warn("Telegram sendPhoto failed, falling back to sendMessage:", photoErr instanceof Error ? photoErr.message : photoErr);
+        }
       }
-    }
 
-    await send("sendMessage", {
-      chat_id: chatId,
-      text: text,
-      parse_mode: "HTML"
-    });
-    console.log("Telegram notification (text) sent successfully");
+      await send("sendMessage", {
+        chat_id: chatId,
+        text: text,
+        parse_mode: "HTML"
+      });
+      console.log(`Telegram notification (text) sent successfully to ${chatId}`);
+    }
   } catch (err) {
     console.error("Telegram Error:", err instanceof Error ? err.message : err);
   }

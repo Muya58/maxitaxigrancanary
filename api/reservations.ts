@@ -72,9 +72,14 @@ export default async function handler(req: any, res: any) {
 
     // 3. Notificación a Telegram (Formato Premium Idéntico a tu captura)
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
-    
-    if (botToken && chatId) {
+    // Soporta varios destinatarios: TELEGRAM_CHAT_ID puede llevar varios IDs separados por coma
+    // Ej: TELEGRAM_CHAT_ID="7163120443,123456789"
+    const chatIds = (process.env.TELEGRAM_CHAT_ID || "")
+      .split(",")
+      .map((id) => id.trim())
+      .filter(Boolean);
+
+    if (botToken && chatIds.length > 0) {
       const message = `*NUEVA RESERVA | #RES-${resID}* 🚕\n\n` +
         `👤 *Cliente:* ${payload.clientName}\n` +
         `📱 *Teléfono:* [${payload.clientPhone}](${waLink})\n` +
@@ -91,12 +96,16 @@ export default async function handler(req: any, res: any) {
         `📉 *Comisión (10%):* ${comision}€\n\n` +
         `Por favor, confirma la recepción.`;
 
-      await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        chat_id: chatId, 
-        text: message, 
-        parse_mode: "Markdown",
-        disable_web_page_preview: true
-      }).catch(err => console.error("Error Telegram"));
+      await Promise.all(
+        chatIds.map((chatId) =>
+          axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            chat_id: chatId,
+            text: message,
+            parse_mode: "Markdown",
+            disable_web_page_preview: true
+          }).catch(() => console.error(`Error Telegram (chat ${chatId})`))
+        )
+      );
     }
 
     // 4. Conexión a Google Sheets
