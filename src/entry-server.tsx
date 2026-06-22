@@ -1,27 +1,16 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
-import App from './App';
+import Router from './Router';
 
-export function render() {
-  const helmetContext: any = {};
-  
+export function render(url: string = '/') {
   const html = renderToString(
     <React.StrictMode>
-      <HelmetProvider context={helmetContext}>
-        <App />
+      <HelmetProvider>
+        <Router url={url} />
       </HelmetProvider>
     </React.StrictMode>
   );
 
-  const { helmet } = helmetContext;
-
-  return {
-    html,
-    head: helmet ? `
-      ${helmet.title.toString()}
-      ${helmet.meta.toString()}
-      ${helmet.link.toString()}
-    ` : ''
-  };
+  return { html };
 }

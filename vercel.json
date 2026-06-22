@@ -1,24 +1,11 @@
 {
-  "redirects": [
-    {
-      "source": "/services-store/:match*",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/about",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/appointments",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/p/:match*",
-      "destination": "/",
-      "permanent": true
-    }
+  "rewrites": [
+    { "source": "/transfer-maspalomas", "destination": "/transfer-maspalomas/index.html" },
+    { "source": "/transfer-las-palmas", "destination": "/transfer-las-palmas/index.html" },
+    { "source": "/transfer-puerto-rico", "destination": "/transfer-puerto-rico/index.html" },
+    { "source": "/transfer-meloneras", "destination": "/transfer-meloneras/index.html" },
+    { "source": "/transfer-agaete", "destination": "/transfer-agaete/index.html" },
+    { "source": "/transfer-arucas", "destination": "/transfer-arucas/index.html" },
+    { "source": "/transfer-mogan", "destination": "/transfer-mogan/index.html" }
   ]
 }
