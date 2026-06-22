@@ -27,13 +27,13 @@ export default function DestinationPage({ destination }: Props) {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'TaxiService',
+        '@type': ['LocalBusiness', 'TaxiService'],
         name: 'MaxiTaxi Gran Canaria',
         url: 'https://www.maxitaxigrancanary.com',
         telephone: '+34619735892',
         image: `https://www.maxitaxigrancanary.com${destination.img}`,
         priceRange: '$$',
-        aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '500', bestRating: '5', worstRating: '1' },
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
         areaServed: {
           '@type': 'City',
           name: destination.name,

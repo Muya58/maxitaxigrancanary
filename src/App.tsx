@@ -197,30 +197,6 @@ export default function App() {
         <meta property="og:image" content="https://www.maxitaxigrancanary.com/images/bg-catedral-taxi.jpg" />
         <meta property="og:url" content="https://www.maxitaxigrancanary.com" />
         <meta property="og:type" content="website" />
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "TaxiService",
-              "name": "MaxiTaxi Gran Canaria",
-              "image": "https://www.maxitaxigrancanary.com/images/bg-catedral-taxi.jpg",
-              "telephone": "+34619735892",
-              "url": "https://www.maxitaxigrancanary.com",
-              "areaServed": {
-                "@type": "State",
-                "name": "Las Palmas"
-              },
-              "priceRange": "$$",
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "reviewCount": "500",
-                "bestRating": "5",
-                "worstRating": "1"
-              }
-            }
-          `}
-        </script>
       </Helmet>
       {/* Navigation */}
       <nav 

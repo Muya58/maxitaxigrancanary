@@ -13,13 +13,13 @@ function buildDestinationHead(dest: Destination): string {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'TaxiService',
+        '@type': ['LocalBusiness', 'TaxiService'],
         name: 'MaxiTaxi Gran Canaria',
         url: 'https://www.maxitaxigrancanary.com',
         telephone: '+34619735892',
         image,
         priceRange: '$$',
-        aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '500', bestRating: '5', worstRating: '1' },
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
         areaServed: { '@type': 'City', name: dest.name, containedInPlace: { '@type': 'State', name: 'Las Palmas' } },
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
@@ -53,12 +53,12 @@ function buildDestinationHead(dest: Destination): string {
 function buildHomepageHead(): string {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'TaxiService',
+    '@type': ['LocalBusiness', 'TaxiService'],
     name: 'MaxiTaxi Gran Canaria',
     url: 'https://www.maxitaxigrancanary.com',
     telephone: '+34619735892',
     priceRange: '$$',
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '500', bestRating: '5', worstRating: '1' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
     areaServed: { '@type': 'State', name: 'Las Palmas', containedInPlace: { '@type': 'Country', name: 'Spain' } },
     description: 'Taxi 8 plazas al aeropuerto de Gran Canaria. Precio fijo, 24h, monitorización de vuelos.',
   };
