@@ -29,6 +29,7 @@ interface PriceData {
   totalPrice: string;
   distanceKm: string;
   durationMins: string;
+  isEstimate?: boolean;
 }
 
 interface FormData {
@@ -47,6 +48,36 @@ const LANGUAGES = [
   { code: 'en', label: 'English', flag: '🇬🇧' },
   { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
   { code: 'nl', label: 'Nederlands', flag: '🇳🇱' },
+];
+
+const GC_LOCATIONS = [
+  "Aeropuerto Gran Canaria (LPA)",
+  "Las Palmas - Centro / Triana",
+  "Las Palmas - Las Canteras",
+  "Las Palmas - Santa Catalina",
+  "Maspalomas",
+  "Playa del Inglés",
+  "Meloneras",
+  "San Agustín",
+  "Puerto Rico",
+  "Arguineguín",
+  "Puerto de Mogán",
+  "Mogán",
+  "Taurito",
+  "Amadores",
+  "Telde",
+  "Agüimes",
+  "Vecindario",
+  "Ingenio",
+  "Santa Lucía de Tirajana",
+  "San Bartolomé de Tirajana",
+  "Agaete",
+  "Puerto de las Nieves",
+  "Arucas",
+  "Gáldar",
+  "Guía",
+  "Teror",
+  "Cruz de Tejeda",
 ];
 
 export default function App() {
@@ -104,7 +135,8 @@ export default function App() {
         setPrice({
           totalPrice: data.totalPrice,
           distanceKm: data.distanceKm,
-          durationMins: data.durationMins
+          durationMins: data.durationMins,
+          isEstimate: data.isEstimate ?? false,
         });
       }
     } catch (e) {
@@ -113,7 +145,10 @@ export default function App() {
   }, [watchPickup, watchDestination, watchDateTime, watchMunicipality]);
 
   useEffect(() => {
-    calculatePrice();
+    const timer = setTimeout(() => {
+      calculatePrice();
+    }, 600);
+    return () => clearTimeout(timer);
   }, [watchPickup, watchDestination, watchDateTime, watchMunicipality, calculatePrice]);
 
   const onFormSubmit = async (data: FormData) => {
@@ -175,7 +210,14 @@ export default function App() {
                 "@type": "State",
                 "name": "Las Palmas"
               },
-              "priceRange": "$$"
+              "priceRange": "$$",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "500",
+                "bestRating": "5",
+                "worstRating": "1"
+              }
             }
           `}
         </script>
@@ -436,6 +478,12 @@ export default function App() {
                       </div>
                     </div>
 
+                    <datalist id="gc-locations">
+                      {GC_LOCATIONS.map((loc) => (
+                        <option key={loc} value={loc} />
+                      ))}
+                    </datalist>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest flex justify-between">
@@ -444,9 +492,10 @@ export default function App() {
                         </label>
                         <div className="relative">
                           <MapPin className={`absolute left-4 top-3 ${errors.pickupAddress ? 'text-brand' : 'text-brand/50'}`} size={16} />
-                          <input 
+                          <input
                             {...register('pickupAddress', { required: true, minLength: 5 })}
                             type="text"
+                            list="gc-locations"
                             placeholder="Aeropuerto / Hotel / Dirección"
                             className={`w-full pl-12 pr-4 py-3 bg-white/5 border ${errors.pickupAddress ? 'border-brand' : 'border-white/10'} rounded-xl focus:ring-1 focus:ring-brand focus:border-brand transition-all outline-none text-white text-sm`}
                           />
@@ -459,12 +508,13 @@ export default function App() {
                         </label>
                         <div className="relative">
                           <MapPin className={`absolute left-4 top-3 ${errors.destinationAddress ? 'text-brand' : 'text-brand/50'}`} size={16} />
-                          <input 
-                            {...register('destinationAddress', { 
-                              required: true, 
+                          <input
+                            {...register('destinationAddress', {
+                              required: true,
                               minLength: 5
                             })}
                             type="text"
+                            list="gc-locations"
                             placeholder="Hotel / Ciudad"
                             className={`w-full pl-12 pr-4 py-3 bg-white/5 border ${errors.destinationAddress ? 'border-brand' : 'border-white/10'} rounded-xl focus:ring-1 focus:ring-brand focus:border-brand transition-all outline-none text-white text-sm`}
                           />
@@ -517,14 +567,18 @@ export default function App() {
                             <div>
                               <div className="flex items-center gap-2 mb-1">
                                 <span className="w-2 h-2 bg-brand rounded-full animate-pulse" />
-                                <p className="text-[10px] font-black text-brand uppercase tracking-[0.2em]">Tarificador en Tiempo Real</p>
+                                <p className="text-[10px] font-black text-brand uppercase tracking-[0.2em]">
+                                  {price.isEstimate ? 'Estimación Aproximada' : 'Tarificador en Tiempo Real'}
+                                </p>
                               </div>
                               <div className="flex items-baseline gap-1">
-                                <span className="text-4xl font-black text-white">{price.totalPrice}</span>
+                                <span className="text-4xl font-black text-white">~{price.totalPrice}</span>
                                 <span className="text-xl font-black text-brand">€</span>
                               </div>
                               <p className="text-[9px] text-slate-500 mt-2 uppercase font-bold italic tracking-wide max-w-[180px]">
-                                * Precio estimado. Puede variar ligeramente según el tráfico actual.
+                                {price.isEstimate
+                                  ? '* Ubic. no reconocida. Selecciona de las sugerencias para mayor precisión.'
+                                  : '* Precio estimado. Puede variar ligeramente según el tráfico actual.'}
                               </p>
                             </div>
                             <div className="text-right text-[10px] font-black text-slate-500 uppercase tracking-widest space-y-2">
@@ -826,10 +880,10 @@ export default function App() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group relative h-[450px] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 bg-slate-900"
               >
-                <img 
-                  src={loc.img} 
-                  alt={loc.alt} 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                <img
+                  src={loc.img}
+                  alt={`MaxiTaxi Gran Canaria - ${loc.name}`}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                   loading="lazy"
                   decoding="async"

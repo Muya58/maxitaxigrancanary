@@ -19,6 +19,7 @@ function buildDestinationHead(dest: Destination): string {
         telephone: '+34619735892',
         image,
         priceRange: '$$',
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '500', bestRating: '5', worstRating: '1' },
         areaServed: { '@type': 'City', name: dest.name, containedInPlace: { '@type': 'State', name: 'Las Palmas' } },
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
@@ -57,6 +58,7 @@ function buildHomepageHead(): string {
     url: 'https://www.maxitaxigrancanary.com',
     telephone: '+34619735892',
     priceRange: '$$',
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '500', bestRating: '5', worstRating: '1' },
     areaServed: { '@type': 'State', name: 'Las Palmas', containedInPlace: { '@type': 'Country', name: 'Spain' } },
     description: 'Taxi 8 plazas al aeropuerto de Gran Canaria. Precio fijo, 24h, monitorización de vuelos.',
   };
