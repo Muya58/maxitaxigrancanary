@@ -130,3 +130,24 @@ export function getDestinationByPath(path: string): Destination | undefined {
   const cleanPath = path.replace(/\/$/, '');
   return destinations.find(d => d.urlPath === cleanPath);
 }
+
+export function buildFAQs(dest: Destination): Array<{ question: string; answer: string }> {
+  return [
+    {
+      question: `¿Cuánto cuesta el transfer de ${dest.name} al aeropuerto de Gran Canaria?`,
+      answer: `El transfer desde ${dest.name} al Aeropuerto de Gran Canaria (LPA) tiene precio fijo desde ${dest.priceFrom}€, sin taxímetro ni sorpresas. El precio cubre a todos los pasajeros del vehículo (hasta 8 plazas) y todo el equipaje.`,
+    },
+    {
+      question: `¿Cuánto tarda el trayecto de ${dest.name} al aeropuerto?`,
+      answer: `El trayecto desde ${dest.name} al Aeropuerto LPA dura aproximadamente ${dest.durationMins} minutos y cubre ${dest.distanceKm} km. MaxiTaxi monitoriza los vuelos en tiempo real para recogerte a la hora exacta, incluso si tu vuelo llega con retraso.`,
+    },
+    {
+      question: `¿Hay servicio de transfer nocturno desde ${dest.name}?`,
+      answer: `Sí, MaxiTaxi opera las 24 horas, los 7 días de la semana, incluidos festivos. Puedes reservar tu transfer desde ${dest.name} a cualquier hora del día o de la noche, sin recargo nocturno.`,
+    },
+    {
+      question: `¿Cuántas personas pueden viajar en el transfer desde ${dest.name}?`,
+      answer: `Nuestros vehículos tienen capacidad para hasta 8 pasajeros con todo su equipaje. Son perfectos para familias numerosas, grupos de amigos o equipos que viajan juntos desde ${dest.name} al aeropuerto de Gran Canaria.`,
+    },
+  ];
+}

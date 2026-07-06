@@ -1,11 +1,11 @@
 {
-  "rewrites": [
-    { "source": "/transfer-maspalomas", "destination": "/transfer-maspalomas/index.html" },
-    { "source": "/transfer-las-palmas", "destination": "/transfer-las-palmas/index.html" },
-    { "source": "/transfer-puerto-rico", "destination": "/transfer-puerto-rico/index.html" },
-    { "source": "/transfer-meloneras", "destination": "/transfer-meloneras/index.html" },
-    { "source": "/transfer-agaete", "destination": "/transfer-agaete/index.html" },
-    { "source": "/transfer-arucas", "destination": "/transfer-arucas/index.html" },
-    { "source": "/transfer-mogan", "destination": "/transfer-mogan/index.html" }
+  "redirects": [
+    { "source": "/transfer-maspalomas", "destination": "/transfer-maspalomas/", "statusCode": 301 },
+    { "source": "/transfer-las-palmas", "destination": "/transfer-las-palmas/", "statusCode": 301 },
+    { "source": "/transfer-puerto-rico", "destination": "/transfer-puerto-rico/", "statusCode": 301 },
+    { "source": "/transfer-meloneras", "destination": "/transfer-meloneras/", "statusCode": 301 },
+    { "source": "/transfer-agaete", "destination": "/transfer-agaete/", "statusCode": 301 },
+    { "source": "/transfer-arucas", "destination": "/transfer-arucas/", "statusCode": 301 },
+    { "source": "/transfer-mogan", "destination": "/transfer-mogan/", "statusCode": 301 }
   ]
 }

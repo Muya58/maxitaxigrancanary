@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Car, Clock, MapPin, MessageCircle, Phone, ShieldCheck, Star, CheckCircle2, ArrowRight, ChevronRight, Menu, X } from 'lucide-react';
-import { type Destination, destinations } from '../data/destinations';
+import { type Destination, destinations, buildFAQs } from '../data/destinations';
 
 interface Props {
   destination: Destination;
@@ -23,6 +23,8 @@ export default function DestinationPage({ destination }: Props) {
   const waUrl = `https://wa.me/34619735892?text=${waMessage}`;
   const canonicalUrl = `https://www.maxitaxigrancanary.com${destination.urlPath}/`;
 
+  const faqs = buildFAQs(destination);
+
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -33,6 +35,18 @@ export default function DestinationPage({ destination }: Props) {
         telephone: '+34619735892',
         image: `https://www.maxitaxigrancanary.com${destination.img}`,
         priceRange: '$$',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Las Palmas de Gran Canaria',
+          addressRegion: 'Las Palmas',
+          addressCountry: 'ES',
+        },
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '00:00',
+          closes: '23:59',
+        },
         aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
         areaServed: {
           '@type': 'City',
@@ -59,6 +73,14 @@ export default function DestinationPage({ destination }: Props) {
           { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.maxitaxigrancanary.com/' },
           { '@type': 'ListItem', position: 2, name: `Transfer ${destination.name}`, item: canonicalUrl },
         ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
       },
     ],
   };
@@ -144,7 +166,7 @@ export default function DestinationPage({ destination }: Props) {
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-center pt-24 pb-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={destination.img} alt={destination.name} className="w-full h-full object-cover opacity-25 scale-105" />
+          <img src={destination.img} alt={`Transfer taxi ${destination.name} — Aeropuerto Gran Canaria`} className="w-full h-full object-cover opacity-25 scale-105" />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-deep/80 via-bg-deep/60 to-bg-deep" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -314,6 +336,23 @@ export default function DestinationPage({ destination }: Props) {
                 </div>
                 <h3 className="font-display text-lg font-black text-white mb-3 uppercase tracking-tight">{title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed font-medium">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 border-t border-white/5 bg-ink">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-black text-white mb-12 tracking-tighter">
+            Preguntas frecuentes sobre el transfer desde {destination.name}
+          </h2>
+          <div className="space-y-0">
+            {faqs.map((faq, i) => (
+              <div key={i} className="py-6 border-b border-white/10">
+                <h3 className="text-white font-bold text-base mb-3 leading-snug">{faq.question}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{faq.answer}</p>
               </div>
             ))}
           </div>

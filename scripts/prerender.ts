@@ -1,14 +1,29 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
-import { type Destination, destinations } from '../src/data/destinations';
+import { type Destination, destinations, buildFAQs } from '../src/data/destinations';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbsolute = (p: string) => path.resolve(__dirname, '..', p);
 
+const BUSINESS_ADDRESS = {
+  '@type': 'PostalAddress',
+  addressLocality: 'Las Palmas de Gran Canaria',
+  addressRegion: 'Las Palmas',
+  addressCountry: 'ES',
+};
+
+const OPENING_HOURS = {
+  '@type': 'OpeningHoursSpecification',
+  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+  opens: '00:00',
+  closes: '23:59',
+};
+
 function buildDestinationHead(dest: Destination): string {
   const canonical = `https://www.maxitaxigrancanary.com${dest.urlPath}/`;
   const image = `https://www.maxitaxigrancanary.com${dest.img}`;
+  const faqs = buildFAQs(dest);
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -19,6 +34,8 @@ function buildDestinationHead(dest: Destination): string {
         telephone: '+34619735892',
         image,
         priceRange: '$$',
+        address: BUSINESS_ADDRESS,
+        openingHoursSpecification: OPENING_HOURS,
         aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
         areaServed: { '@type': 'City', name: dest.name, containedInPlace: { '@type': 'State', name: 'Las Palmas' } },
         hasOfferCatalog: {
@@ -33,6 +50,14 @@ function buildDestinationHead(dest: Destination): string {
           { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.maxitaxigrancanary.com/' },
           { '@type': 'ListItem', position: 2, name: `Transfer ${dest.name}`, item: canonical },
         ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
       },
     ],
   };
@@ -53,14 +78,21 @@ function buildDestinationHead(dest: Destination): string {
 function buildHomepageHead(): string {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'TaxiService'],
-    name: 'MaxiTaxi Gran Canaria',
-    url: 'https://www.maxitaxigrancanary.com',
-    telephone: '+34619735892',
-    priceRange: '$$',
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
-    areaServed: { '@type': 'State', name: 'Las Palmas', containedInPlace: { '@type': 'Country', name: 'Spain' } },
-    description: 'Taxi 8 plazas al aeropuerto de Gran Canaria. Precio fijo, 24h, monitorización de vuelos.',
+    '@graph': [
+      {
+        '@type': ['LocalBusiness', 'TaxiService'],
+        name: 'MaxiTaxi Gran Canaria',
+        url: 'https://www.maxitaxigrancanary.com',
+        telephone: '+34619735892',
+        image: 'https://www.maxitaxigrancanary.com/maspalomas.jpg',
+        priceRange: '$$',
+        address: BUSINESS_ADDRESS,
+        openingHoursSpecification: OPENING_HOURS,
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
+        areaServed: { '@type': 'State', name: 'Las Palmas', containedInPlace: { '@type': 'Country', name: 'Spain' } },
+        description: 'Taxi 8 plazas al aeropuerto de Gran Canaria. Precio fijo, 24h, monitorización de vuelos.',
+      },
+    ],
   };
 
   return `
