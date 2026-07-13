@@ -6,6 +6,14 @@
     { "source": "/transfer-meloneras", "destination": "/transfer-meloneras/", "statusCode": 301 },
     { "source": "/transfer-agaete", "destination": "/transfer-agaete/", "statusCode": 301 },
     { "source": "/transfer-arucas", "destination": "/transfer-arucas/", "statusCode": 301 },
-    { "source": "/transfer-mogan", "destination": "/transfer-mogan/", "statusCode": 301 }
+    { "source": "/transfer-mogan", "destination": "/transfer-mogan/", "statusCode": 301 },
+
+    { "source": "/home", "destination": "/", "statusCode": 301 },
+    { "source": "/about", "destination": "/#servicios", "statusCode": 301 },
+    { "source": "/contact", "destination": "/#reserva", "statusCode": 301 },
+    { "source": "/appointments", "destination": "/#reserva", "statusCode": 301 },
+    { "source": "/services-store", "destination": "/#servicios", "statusCode": 301 },
+    { "source": "/services-store/p/traslados-al-aeropuerto-1", "destination": "/#destinos", "statusCode": 301 },
+    { "source": "/services-store/p/excursiones-por-la-isla", "destination": "/#servicios", "statusCode": 301 }
   ]
 }
