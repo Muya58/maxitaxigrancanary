@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
-import { type Destination, destinations, buildFAQs } from '../src/data/destinations';
+import { type Destination, destinations, buildFAQs, buildFAQsEn } from '../src/data/destinations';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbsolute = (p: string) => path.resolve(__dirname, '..', p);
@@ -22,6 +22,7 @@ const OPENING_HOURS = {
 
 function buildDestinationHead(dest: Destination): string {
   const canonical = `https://www.maxitaxigrancanary.com${dest.urlPath}/`;
+  const canonicalEn = `https://www.maxitaxigrancanary.com/en${dest.urlPath}/`;
   const image = `https://www.maxitaxigrancanary.com${dest.img}`;
   const faqs = buildFAQs(dest);
   const schema = {
@@ -66,10 +67,72 @@ function buildDestinationHead(dest: Destination): string {
     <title>${dest.title}</title>
     <meta name="description" content="${dest.metaDescription}" />
     <link rel="canonical" href="${canonical}" />
+    <link rel="alternate" hreflang="es" href="${canonical}" />
+    <link rel="alternate" hreflang="en" href="${canonicalEn}" />
+    <link rel="alternate" hreflang="x-default" href="${canonical}" />
     <meta property="og:title" content="${dest.title}" />
     <meta property="og:description" content="${dest.metaDescription}" />
     <meta property="og:image" content="${image}" />
     <meta property="og:url" content="${canonical}" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
+
+function buildDestinationHeadEn(dest: Destination): string {
+  const canonicalEs = `https://www.maxitaxigrancanary.com${dest.urlPath}/`;
+  const canonicalEn = `https://www.maxitaxigrancanary.com/en${dest.urlPath}/`;
+  const image = `https://www.maxitaxigrancanary.com${dest.img}`;
+  const faqs = buildFAQsEn(dest);
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['LocalBusiness', 'TaxiService'],
+        name: 'MaxiTaxi Gran Canaria',
+        url: 'https://www.maxitaxigrancanary.com',
+        telephone: '+34619735892',
+        image,
+        priceRange: '$$',
+        address: BUSINESS_ADDRESS,
+        openingHoursSpecification: OPENING_HOURS,
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
+        areaServed: { '@type': 'City', name: dest.name, containedInPlace: { '@type': 'State', name: 'Las Palmas' } },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: `Transfer ${dest.name} - Gran Canaria Airport`,
+          itemListElement: [{ '@type': 'Offer', name: `Transfer ${dest.name} to LPA Airport`, description: dest.en.metaDescription, price: dest.priceFrom, priceCurrency: 'EUR' }],
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.maxitaxigrancanary.com/' },
+          { '@type': 'ListItem', position: 2, name: `Transfer ${dest.name}`, item: canonicalEn },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
+      },
+    ],
+  };
+
+  return `
+    <title>${dest.en.title}</title>
+    <meta name="description" content="${dest.en.metaDescription}" />
+    <link rel="canonical" href="${canonicalEn}" />
+    <link rel="alternate" hreflang="es" href="${canonicalEs}" />
+    <link rel="alternate" hreflang="en" href="${canonicalEn}" />
+    <link rel="alternate" hreflang="x-default" href="${canonicalEs}" />
+    <meta property="og:title" content="${dest.en.title}" />
+    <meta property="og:description" content="${dest.en.metaDescription}" />
+    <meta property="og:image" content="${image}" />
+    <meta property="og:url" content="${canonicalEn}" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
@@ -99,6 +162,8 @@ function buildHomepageHead(): string {
     <title>MaxiTaxi Gran Canaria | Traslados 24h al Aeropuerto LPA</title>
     <meta name="description" content="MaxiTaxi Gran Canaria. Reserva de traslados oficiales 24h al aeropuerto (LPA), Maspalomas y Las Palmas. Taxis de 8 plazas con precio cerrado." />
     <link rel="canonical" href="https://www.maxitaxigrancanary.com/" />
+    <link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/" />
     <meta property="og:title" content="MaxiTaxi Gran Canaria | Traslados 24h al Aeropuerto" />
     <meta property="og:description" content="Taxi 8 plazas al aeropuerto de Gran Canaria. Precio fijo, disponible 24h, monitorización de vuelos en tiempo real." />
     <meta property="og:image" content="https://www.maxitaxigrancanary.com/maspalomas.jpg" />
@@ -127,21 +192,32 @@ async function prerender() {
     const serverEntryPath = pathToFileURL(toAbsolute('dist/server/entry-server.js')).href;
     const renderModule = await import(serverEntryPath);
 
-    const routes: Array<{ url: string; outPath: string; head: string }> = [
-      { url: '/', outPath: 'dist/index.html', head: buildHomepageHead() },
+    const routes: Array<{ url: string; outPath: string; head: string; lang: string }> = [
+      { url: '/', outPath: 'dist/index.html', head: buildHomepageHead(), lang: 'es' },
       ...destinations.map(d => ({
         url: d.urlPath,
         outPath: `dist${d.urlPath}/index.html`,
         head: buildDestinationHead(d),
+        lang: 'es',
+      })),
+      ...destinations.map(d => ({
+        url: `/en${d.urlPath}`,
+        outPath: `dist/en${d.urlPath}/index.html`,
+        head: buildDestinationHeadEn(d),
+        lang: 'en',
       })),
     ];
 
-    for (const { url, outPath, head } of routes) {
+    for (const { url, outPath, head, lang } of routes) {
       const { html } = renderModule.render(url);
 
-      const finalHtml = rawTemplate
+      let finalHtml = rawTemplate
         .replace(`<!--ssr-outlet-->`, html)
         .replace(`<!--ssr-head-->`, head);
+
+      if (lang === 'en') {
+        finalHtml = finalHtml.replace(' lang="es"', ' lang="en"');
+      }
 
       const fullPath = toAbsolute(outPath);
       fs.mkdirSync(path.dirname(fullPath), { recursive: true });

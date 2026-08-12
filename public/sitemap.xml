@@ -1,51 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.maxitaxigrancanary.com/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/"/>
   </url>
   <url>
     <loc>https://www.maxitaxigrancanary.com/transfer-maspalomas/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-maspalomas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-maspalomas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-maspalomas/"/>
+  </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/transfer-maspalomas/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-maspalomas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-maspalomas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-maspalomas/"/>
   </url>
   <url>
     <loc>https://www.maxitaxigrancanary.com/transfer-las-palmas/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-las-palmas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-las-palmas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-las-palmas/"/>
+  </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/transfer-las-palmas/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-las-palmas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-las-palmas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-las-palmas/"/>
   </url>
   <url>
     <loc>https://www.maxitaxigrancanary.com/transfer-puerto-rico/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-puerto-rico/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-puerto-rico/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-puerto-rico/"/>
+  </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/transfer-puerto-rico/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-puerto-rico/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-puerto-rico/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-puerto-rico/"/>
   </url>
   <url>
     <loc>https://www.maxitaxigrancanary.com/transfer-meloneras/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-meloneras/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-meloneras/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-meloneras/"/>
+  </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/transfer-meloneras/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-meloneras/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-meloneras/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-meloneras/"/>
   </url>
   <url>
     <loc>https://www.maxitaxigrancanary.com/transfer-agaete/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-agaete/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-agaete/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-agaete/"/>
+  </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/transfer-agaete/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-agaete/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-agaete/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-agaete/"/>
   </url>
   <url>
     <loc>https://www.maxitaxigrancanary.com/transfer-arucas/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-arucas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-arucas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-arucas/"/>
+  </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/transfer-arucas/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-arucas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-arucas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-arucas/"/>
   </url>
   <url>
     <loc>https://www.maxitaxigrancanary.com/transfer-mogan/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-mogan/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-mogan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-mogan/"/>
+  </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/transfer-mogan/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/transfer-mogan/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-mogan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-mogan/"/>
   </url>
 </urlset>

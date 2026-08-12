@@ -8,6 +8,14 @@
     { "source": "/transfer-arucas", "destination": "/transfer-arucas/", "statusCode": 301 },
     { "source": "/transfer-mogan", "destination": "/transfer-mogan/", "statusCode": 301 },
 
+    { "source": "/en/transfer-maspalomas", "destination": "/en/transfer-maspalomas/", "statusCode": 301 },
+    { "source": "/en/transfer-las-palmas", "destination": "/en/transfer-las-palmas/", "statusCode": 301 },
+    { "source": "/en/transfer-puerto-rico", "destination": "/en/transfer-puerto-rico/", "statusCode": 301 },
+    { "source": "/en/transfer-meloneras", "destination": "/en/transfer-meloneras/", "statusCode": 301 },
+    { "source": "/en/transfer-agaete", "destination": "/en/transfer-agaete/", "statusCode": 301 },
+    { "source": "/en/transfer-arucas", "destination": "/en/transfer-arucas/", "statusCode": 301 },
+    { "source": "/en/transfer-mogan", "destination": "/en/transfer-mogan/", "statusCode": 301 },
+
     { "source": "/home", "destination": "/", "statusCode": 301 },
     { "source": "/about", "destination": "/#servicios", "statusCode": 301 },
     { "source": "/contact", "destination": "/#reserva", "statusCode": 301 },
