@@ -16,6 +16,8 @@
     { "source": "/en/transfer-arucas", "destination": "/en/transfer-arucas/", "statusCode": 301 },
     { "source": "/en/transfer-mogan", "destination": "/en/transfer-mogan/", "statusCode": 301 },
     { "source": "/en/airport-transfer-guide", "destination": "/en/airport-transfer-guide/", "statusCode": 301 },
+    { "source": "/transfer-playa-del-ingles", "destination": "/transfer-playa-del-ingles/", "statusCode": 301 },
+    { "source": "/en/transfer-playa-del-ingles", "destination": "/en/transfer-playa-del-ingles/", "statusCode": 301 },
 
     { "source": "/home", "destination": "/", "statusCode": 301 },
     { "source": "/about", "destination": "/#servicios", "statusCode": 301 },
