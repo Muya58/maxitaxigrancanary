@@ -2,6 +2,7 @@ import React from 'react';
 import App from './App';
 import DestinationPage from './pages/DestinationPage';
 import EnDestinationPage from './pages/EnDestinationPage';
+import TransferGuidePage from './pages/TransferGuidePage';
 import { getDestinationByPath } from './data/destinations';
 
 interface Props {
@@ -11,6 +12,10 @@ interface Props {
 export default function Router({ url }: Props) {
   const pathname = url ?? (typeof window !== 'undefined' ? window.location.pathname : '/');
   const cleanPath = pathname.replace(/\/$/, '');
+
+  if (cleanPath === '/en/airport-transfer-guide') {
+    return <TransferGuidePage />;
+  }
 
   if (cleanPath.startsWith('/en/transfer-')) {
     const esPath = cleanPath.replace('/en', '');

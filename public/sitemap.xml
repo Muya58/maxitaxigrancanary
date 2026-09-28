@@ -135,4 +135,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/transfer-mogan/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/transfer-mogan/"/>
   </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/airport-transfer-guide/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/airport-transfer-guide/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/en/airport-transfer-guide/"/>
+  </url>
 </urlset>

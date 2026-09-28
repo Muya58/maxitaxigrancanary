@@ -15,6 +15,7 @@
     { "source": "/en/transfer-agaete", "destination": "/en/transfer-agaete/", "statusCode": 301 },
     { "source": "/en/transfer-arucas", "destination": "/en/transfer-arucas/", "statusCode": 301 },
     { "source": "/en/transfer-mogan", "destination": "/en/transfer-mogan/", "statusCode": 301 },
+    { "source": "/en/airport-transfer-guide", "destination": "/en/airport-transfer-guide/", "statusCode": 301 },
 
     { "source": "/home", "destination": "/", "statusCode": 301 },
     { "source": "/about", "destination": "/#servicios", "statusCode": 301 },

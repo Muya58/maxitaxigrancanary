@@ -173,6 +173,58 @@ function buildHomepageHead(): string {
     <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
 
+function buildTransferGuideHead(): string {
+  const canonical = 'https://www.maxitaxigrancanary.com/en/airport-transfer-guide/';
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        headline: 'Gran Canaria Airport Transfer Guide 2026',
+        description: 'Complete guide to Gran Canaria Airport (LPA) transfers — prices, distances, journey times and tips for arriving travellers.',
+        url: canonical,
+        datePublished: '2026-09-01',
+        dateModified: '2026-09-28',
+        author: { '@type': 'Organization', name: 'MaxiTaxi Gran Canaria' },
+        publisher: { '@type': 'Organization', name: 'MaxiTaxi Gran Canaria', url: 'https://www.maxitaxigrancanary.com' },
+        image: 'https://www.maxitaxigrancanary.com/maspalomas.jpg',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.maxitaxigrancanary.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Airport Transfer Guide', item: canonical },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: 'How much does a taxi from Gran Canaria Airport cost?', acceptedAnswer: { '@type': 'Answer', text: 'Fixed prices with MaxiTaxi start from €35 to Las Palmas and up to €65 for Mogán. All prices are fixed — no meters, no surprises. The 8-seater vehicle fits up to 8 passengers and their luggage at the same price.' } },
+          { '@type': 'Question', name: 'Is it better to pre-book a transfer or take a taxi at the airport?', acceptedAnswer: { '@type': 'Answer', text: 'Pre-booking is strongly recommended. Airport taxi queues can be long, especially after busy flights from the UK and Ireland. With a pre-booked transfer, your driver waits at arrivals with a name board — no queue, no waiting.' } },
+          { '@type': 'Question', name: 'How long does it take to get from Gran Canaria Airport to the south resorts?', acceptedAnswer: { '@type': 'Answer', text: 'Maspalomas: approx. 40 minutes (47 km). Puerto Rico: approx. 35 minutes (38 km). Meloneras: approx. 38 minutes (44 km). Mogán: approx. 50 minutes (55 km).' } },
+          { '@type': 'Question', name: 'Do you operate 24 hours including night arrivals?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — MaxiTaxi operates 24 hours a day, 365 days a year. There is no surcharge for night transfers.' } },
+          { '@type': 'Question', name: 'Can we fit 8 passengers with luggage in one vehicle?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Our 8-seater minivans have ample luggage space including room for pushchairs, golf bags and large suitcases.' } },
+          { '@type': 'Question', name: 'How do I book a transfer from Gran Canaria Airport?', acceptedAnswer: { '@type': 'Answer', text: 'The quickest way is via WhatsApp (+34 619 735 892). Send your flight number, arrival date, number of passengers and destination. We reply within minutes to confirm.' } },
+        ],
+      },
+    ],
+  };
+
+  return `
+    <title>Gran Canaria Airport Transfer Guide 2026 | MaxiTaxi</title>
+    <meta name="description" content="Complete guide to Gran Canaria Airport (LPA) transfers. Fixed prices from €35, 8-seater taxis, all resorts covered. Maspalomas, Puerto Rico, Las Palmas & more. Book via WhatsApp." />
+    <link rel="canonical" href="${canonical}" />
+    <link rel="alternate" hreflang="en" href="${canonical}" />
+    <link rel="alternate" hreflang="x-default" href="${canonical}" />
+    <meta property="og:title" content="Gran Canaria Airport Transfer Guide 2026 | MaxiTaxi" />
+    <meta property="og:description" content="Fixed prices, 8-seater taxis, flight monitoring. The complete guide to getting from Gran Canaria Airport to any resort." />
+    <meta property="og:url" content="${canonical}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://www.maxitaxigrancanary.com/maspalomas.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
+
 async function prerender() {
   const templatePath = toAbsolute('dist/index.html');
 
@@ -206,6 +258,12 @@ async function prerender() {
         head: buildDestinationHeadEn(d),
         lang: 'en',
       })),
+      {
+        url: '/en/airport-transfer-guide',
+        outPath: 'dist/en/airport-transfer-guide/index.html',
+        head: buildTransferGuideHead(),
+        lang: 'en',
+      },
     ];
 
     for (const { url, outPath, head, lang } of routes) {
