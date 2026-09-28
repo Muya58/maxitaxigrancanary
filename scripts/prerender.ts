@@ -278,6 +278,66 @@ function buildGroupPageHead(): string {
     <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
 
+function buildPricesPageHead(): string {
+  const canonical = 'https://www.maxitaxigrancanary.com/en/prices/';
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['LocalBusiness', 'TaxiService'],
+        name: 'MaxiTaxi Gran Canaria',
+        url: 'https://www.maxitaxigrancanary.com',
+        telephone: '+34619735892',
+        image: 'https://www.maxitaxigrancanary.com/maspalomas.jpg',
+        priceRange: '$$',
+        address: BUSINESS_ADDRESS,
+        openingHoursSpecification: OPENING_HOURS,
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Gran Canaria Airport Transfer Prices',
+          itemListElement: [
+            { '@type': 'Offer', name: 'Airport Transfer to Las Palmas', priceSpecification: { '@type': 'PriceSpecification', price: 35, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Maspalomas', priceSpecification: { '@type': 'PriceSpecification', price: 55, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Puerto Rico', priceSpecification: { '@type': 'PriceSpecification', price: 50, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Mogán', priceSpecification: { '@type': 'PriceSpecification', price: 65, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+          ],
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.maxitaxigrancanary.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Taxi Prices Gran Canaria', item: canonical },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: 'Are Gran Canaria taxi prices fixed or metered?', acceptedAnswer: { '@type': 'Answer', text: 'With MaxiTaxi, all prices are fixed in advance. You agree the price before you travel — no meter, no surprises.' } },
+          { '@type': 'Question', name: 'Does the price include all passengers and luggage?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The price shown is per vehicle, not per person. Up to 8 passengers and all luggage is included at no extra cost.' } },
+          { '@type': 'Question', name: 'Is there a surcharge for night arrivals?', acceptedAnswer: { '@type': 'Answer', text: 'No. MaxiTaxi operates 24/7 at the same prices — no night surcharge, no weekend surcharge, no holiday surcharge.' } },
+          { '@type': 'Question', name: 'How much does a taxi from Gran Canaria Airport to Maspalomas cost?', acceptedAnswer: { '@type': 'Answer', text: 'A fixed-price transfer from Gran Canaria Airport (LPA) to Maspalomas with MaxiTaxi costs €55 for the whole vehicle (up to 8 passengers).' } },
+        ],
+      },
+    ],
+  };
+
+  return `
+    <title>Gran Canaria Airport Taxi Prices 2026 | Fixed Transfer Rates | MaxiTaxi</title>
+    <meta name="description" content="Gran Canaria airport taxi prices 2026. Fixed rates from €35 (Las Palmas) to €65 (Mogán). 8-seater, all luggage included, 24/7. No meters, no surprises." />
+    <link rel="canonical" href="${canonical}" />
+    <link rel="alternate" hreflang="en" href="${canonical}" />
+    <link rel="alternate" hreflang="x-default" href="${canonical}" />
+    <meta property="og:title" content="Gran Canaria Airport Taxi Prices 2026 | MaxiTaxi" />
+    <meta property="og:description" content="Fixed airport taxi prices. Las Palmas €35, Maspalomas €55, Puerto Rico €50, Mogán €65. Up to 8 passengers, same price." />
+    <meta property="og:url" content="${canonical}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.maxitaxigrancanary.com/maspalomas.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
+
 function buildEnGroupPageHead(): string {
   const canonical = 'https://www.maxitaxigrancanary.com/en/8-seater-taxi/';
   const canonicalEs = 'https://www.maxitaxigrancanary.com/taxi-8-plazas/';
@@ -380,6 +440,12 @@ async function prerender() {
         url: '/en/8-seater-taxi',
         outPath: 'dist/en/8-seater-taxi/index.html',
         head: buildEnGroupPageHead(),
+        lang: 'en',
+      },
+      {
+        url: '/en/prices',
+        outPath: 'dist/en/prices/index.html',
+        head: buildPricesPageHead(),
         lang: 'en',
       },
     ];

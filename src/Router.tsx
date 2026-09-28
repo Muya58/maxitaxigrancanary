@@ -5,6 +5,7 @@ import EnDestinationPage from './pages/EnDestinationPage';
 import TransferGuidePage from './pages/TransferGuidePage';
 import GroupTransferPage from './pages/GroupTransferPage';
 import EnGroupTransferPage from './pages/EnGroupTransferPage';
+import PricesPage from './pages/PricesPage';
 import { getDestinationByPath } from './data/destinations';
 
 interface Props {
@@ -25,6 +26,10 @@ export default function Router({ url }: Props) {
 
   if (cleanPath === '/en/8-seater-taxi') {
     return <EnGroupTransferPage />;
+  }
+
+  if (cleanPath === '/en/prices') {
+    return <PricesPage />;
   }
 
   if (cleanPath.startsWith('/en/transfer-')) {

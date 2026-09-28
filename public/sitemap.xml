@@ -179,4 +179,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/8-seater-taxi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/taxi-8-plazas/"/>
   </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/prices/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/prices/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/en/prices/"/>
+  </url>
 </urlset>

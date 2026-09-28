@@ -345,6 +345,15 @@ export default function App() {
               ))}
             </div>
 
+            <div className="flex flex-wrap gap-3 mb-8">
+              <a href="/taxi-8-plazas/" className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-brand/20 rounded-xl text-[11px] font-black text-brand uppercase tracking-widest hover:bg-brand/10 transition-all group">
+                <Users size={13} strokeWidth={3} />Grupos y Familias — 8 Plazas<ChevronRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/en/airport-transfer-guide/" className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[11px] font-black text-slate-400 uppercase tracking-widest hover:text-white hover:border-white/20 transition-all group">
+                <Globe size={13} />EN · Transfer Guide<ChevronRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+              </a>
+            </div>
+
             <div className="flex items-center gap-8 pt-8 border-t border-white/5">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_#10B981]" />
@@ -878,6 +887,24 @@ export default function App() {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Internal link banners */}
+          <div className="mt-16 grid md:grid-cols-2 gap-4">
+            <a href="/taxi-8-plazas/" className="group flex items-center justify-between gap-4 p-6 bg-white/3 border border-white/5 rounded-2xl hover:border-brand/30 hover:bg-brand/5 transition-all duration-300">
+              <div>
+                <p className="text-[10px] font-black text-brand uppercase tracking-widest mb-1">Grupos y Familias</p>
+                <p className="text-white font-bold text-sm">Taxi 8 Plazas — Un vehículo para todo el grupo</p>
+              </div>
+              <ChevronRight size={20} className="text-brand shrink-0 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="/en/airport-transfer-guide/" className="group flex items-center justify-between gap-4 p-6 bg-white/3 border border-white/5 rounded-2xl hover:border-white/20 hover:bg-white/5 transition-all duration-300">
+              <div>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">English Guide</p>
+                <p className="text-white font-bold text-sm">Gran Canaria Airport Transfer Guide 2026</p>
+              </div>
+              <ChevronRight size={20} className="text-slate-500 shrink-0 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -946,6 +973,8 @@ export default function App() {
                 <li><a href="#servicios" className="hover:text-brand transition-colors">SERVICIOS</a></li>
                 <li><a href="#destinos" className="hover:text-brand transition-colors">DESTINOS</a></li>
                 <li><a href="#reserva" className="hover:text-brand transition-colors">RESERVAR</a></li>
+                <li><a href="/taxi-8-plazas/" className="hover:text-brand transition-colors">GRUPOS 8 PLAZAS</a></li>
+                <li><a href="/en/prices/" className="hover:text-brand transition-colors">PRICES (EN)</a></li>
               </ul>
             </div>
 
