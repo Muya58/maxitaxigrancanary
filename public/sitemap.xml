@@ -161,4 +161,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/airport-transfer-guide/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/en/airport-transfer-guide/"/>
   </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/taxi-8-plazas/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/taxi-8-plazas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/8-seater-taxi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/taxi-8-plazas/"/>
+  </url>
+  <url>
+    <loc>https://www.maxitaxigrancanary.com/en/8-seater-taxi/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.maxitaxigrancanary.com/taxi-8-plazas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.maxitaxigrancanary.com/en/8-seater-taxi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.maxitaxigrancanary.com/taxi-8-plazas/"/>
+  </url>
 </urlset>

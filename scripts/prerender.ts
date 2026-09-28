@@ -225,6 +225,112 @@ function buildTransferGuideHead(): string {
     <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
 
+function buildGroupPageHead(): string {
+  const canonical = 'https://www.maxitaxigrancanary.com/taxi-8-plazas/';
+  const canonicalEn = 'https://www.maxitaxigrancanary.com/en/8-seater-taxi/';
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['LocalBusiness', 'TaxiService'],
+        name: 'MaxiTaxi Gran Canaria',
+        url: 'https://www.maxitaxigrancanary.com',
+        telephone: '+34619735892',
+        image: 'https://www.maxitaxigrancanary.com/maspalomas.jpg',
+        priceRange: '$$',
+        address: BUSINESS_ADDRESS,
+        openingHoursSpecification: OPENING_HOURS,
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
+        description: 'Taxi 8 plazas en Gran Canaria para grupos y familias numerosas. Precio fijo al aeropuerto, sin coste extra por equipaje.',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.maxitaxigrancanary.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Taxi 8 Plazas Gran Canaria', item: canonical },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: '¿Cuántas personas caben en un MaxiTaxi?', acceptedAnswer: { '@type': 'Answer', text: 'Nuestros vehículos tienen 8 plazas de pasajero más espacio para el equipaje de todo el grupo. Caben maletas grandes, sillitas de bebé, tablas de surf y similares sin problema.' } },
+          { '@type': 'Question', name: '¿Es más barato que coger dos taxis normales?', acceptedAnswer: { '@type': 'Answer', text: 'Mucho más barato. Dos taxis estándar a Maspalomas cuestan alrededor de 110-120€ en total. Un MaxiTaxi para todo el grupo sale por 55€ — precio fijo.' } },
+          { '@type': 'Question', name: '¿Tengo que pagar extra por el equipaje grande?', acceptedAnswer: { '@type': 'Answer', text: 'No. El precio es por vehículo, no por maleta. Tablas de surf, bicicletas plegadas, sillitas de bebé y maletas de gran tamaño van incluidas en el precio.' } },
+          { '@type': 'Question', name: '¿El conductor espera si el vuelo se retrasa?', acceptedAnswer: { '@type': 'Answer', text: 'Sí. Monitorizamos tu número de vuelo en tiempo real y ajustamos la hora de recogida automáticamente. No cobramos esperas por retrasos de vuelo.' } },
+        ],
+      },
+    ],
+  };
+
+  return `
+    <title>Taxi 8 Plazas Gran Canaria — Transfer Aeropuerto para Grupos y Familias | MaxiTaxi</title>
+    <meta name="description" content="Taxi de 8 plazas en Gran Canaria. Transfer al aeropuerto para grupos y familias numerosas. Precio fijo desde 35€, 24h, sin coste extra por equipaje. Reserva por WhatsApp." />
+    <link rel="canonical" href="${canonical}" />
+    <link rel="alternate" hreflang="es" href="${canonical}" />
+    <link rel="alternate" hreflang="en" href="${canonicalEn}" />
+    <link rel="alternate" hreflang="x-default" href="${canonical}" />
+    <meta property="og:title" content="Taxi 8 Plazas Gran Canaria — Transfer Aeropuerto para Grupos | MaxiTaxi" />
+    <meta property="og:description" content="MaxiTaxi 8 plazas. Un solo vehículo para toda la familia o grupo. Precio fijo desde 35€, 24h." />
+    <meta property="og:url" content="${canonical}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.maxitaxigrancanary.com/maspalomas.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
+
+function buildEnGroupPageHead(): string {
+  const canonical = 'https://www.maxitaxigrancanary.com/en/8-seater-taxi/';
+  const canonicalEs = 'https://www.maxitaxigrancanary.com/taxi-8-plazas/';
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['LocalBusiness', 'TaxiService'],
+        name: 'MaxiTaxi Gran Canaria',
+        url: 'https://www.maxitaxigrancanary.com',
+        telephone: '+34619735892',
+        image: 'https://www.maxitaxigrancanary.com/maspalomas.jpg',
+        priceRange: '$$',
+        address: BUSINESS_ADDRESS,
+        openingHoursSpecification: OPENING_HOURS,
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 500, bestRating: 5, worstRating: 1 },
+        description: '8-seater minivan taxi in Gran Canaria for groups and families. Fixed airport transfer price, no luggage surcharge.',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.maxitaxigrancanary.com/' },
+          { '@type': 'ListItem', position: 2, name: '8-Seater Taxi Gran Canaria', item: canonical },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: 'How many people fit in a MaxiTaxi?', acceptedAnswer: { '@type': 'Answer', text: 'Our 8-seater minivans have room for up to 8 passengers plus their luggage. Large suitcases, pushchairs, surfboards and sports equipment all fit without additional charges.' } },
+          { '@type': 'Question', name: 'Is it cheaper than booking two standard taxis?', acceptedAnswer: { '@type': 'Answer', text: 'Significantly cheaper. Two standard taxis to Maspalomas typically cost around €110-120 combined. One MaxiTaxi for the whole group is €55 — fixed price, no haggling.' } },
+          { '@type': 'Question', name: 'Is there an extra charge for large luggage?', acceptedAnswer: { '@type': 'Answer', text: 'No. The price is per vehicle, not per bag. Surfboards, folded bikes, pushchairs and oversized cases are all included.' } },
+          { '@type': 'Question', name: 'Will the driver wait if our flight is delayed?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. We monitor your flight number in real time and adjust pick-up time automatically. No waiting charges for flight delays.' } },
+        ],
+      },
+    ],
+  };
+
+  return `
+    <title>8-Seater Taxi Gran Canaria — Group & Family Airport Transfer | MaxiTaxi</title>
+    <meta name="description" content="8-seater minivan taxi in Gran Canaria. Fixed price group airport transfers for families, friends and sports groups. From €35, 24/7, no luggage surcharge. Book via WhatsApp." />
+    <link rel="canonical" href="${canonical}" />
+    <link rel="alternate" hreflang="es" href="${canonicalEs}" />
+    <link rel="alternate" hreflang="en" href="${canonical}" />
+    <link rel="alternate" hreflang="x-default" href="${canonicalEs}" />
+    <meta property="og:title" content="8-Seater Taxi Gran Canaria — Group & Family Airport Transfer | MaxiTaxi" />
+    <meta property="og:description" content="One MaxiTaxi for your whole group. Fixed price from €35, 8 seats, 24/7, no luggage surcharge." />
+    <meta property="og:url" content="${canonical}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.maxitaxigrancanary.com/maspalomas.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
+
 async function prerender() {
   const templatePath = toAbsolute('dist/index.html');
 
@@ -262,6 +368,18 @@ async function prerender() {
         url: '/en/airport-transfer-guide',
         outPath: 'dist/en/airport-transfer-guide/index.html',
         head: buildTransferGuideHead(),
+        lang: 'en',
+      },
+      {
+        url: '/taxi-8-plazas',
+        outPath: 'dist/taxi-8-plazas/index.html',
+        head: buildGroupPageHead(),
+        lang: 'es',
+      },
+      {
+        url: '/en/8-seater-taxi',
+        outPath: 'dist/en/8-seater-taxi/index.html',
+        head: buildEnGroupPageHead(),
         lang: 'en',
       },
     ];

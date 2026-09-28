@@ -3,6 +3,8 @@ import App from './App';
 import DestinationPage from './pages/DestinationPage';
 import EnDestinationPage from './pages/EnDestinationPage';
 import TransferGuidePage from './pages/TransferGuidePage';
+import GroupTransferPage from './pages/GroupTransferPage';
+import EnGroupTransferPage from './pages/EnGroupTransferPage';
 import { getDestinationByPath } from './data/destinations';
 
 interface Props {
@@ -15,6 +17,14 @@ export default function Router({ url }: Props) {
 
   if (cleanPath === '/en/airport-transfer-guide') {
     return <TransferGuidePage />;
+  }
+
+  if (cleanPath === '/taxi-8-plazas') {
+    return <GroupTransferPage />;
+  }
+
+  if (cleanPath === '/en/8-seater-taxi') {
+    return <EnGroupTransferPage />;
   }
 
   if (cleanPath.startsWith('/en/transfer-')) {
