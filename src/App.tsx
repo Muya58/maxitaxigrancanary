@@ -309,10 +309,10 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block px-3 py-1 bg-brand/10 text-brand text-[10px] font-black uppercase tracking-[0.2em] mb-6 rounded-sm border border-brand/20">
-              Gran Canaria Premium Transfers
+              Taxi Oficial · Precio Fijo · 8 Plazas
             </div>
             <h1 className="font-display text-5xl lg:text-7xl font-extrabold text-white leading-none mb-8 tracking-tighter">
-              Tu Taxi de confianza <span className="text-brand">24 Horas</span> en la isla.
+              Traslados al <span className="text-brand">Aeropuerto Gran Canaria</span> — MaxiTaxi 24h
             </h1>
             <p className="text-lg text-slate-400 mb-12 leading-relaxed max-w-xl font-medium">
               Servicio oficial de traslados al Aeropuerto de Gran Canaria, Maspalomas, Las Palmas y mucho más.
