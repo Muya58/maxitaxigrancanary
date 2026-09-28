@@ -169,6 +169,8 @@ export default function App() {
 
       if (response.ok) {
         // Enviar datos al Google Sheet para el review bot
+        const precioNum = price ? parseFloat(String(price.totalPrice).replace(/[^\d.]/g, '')) : 0;
+        const comision  = precioNum > 0 ? (precioNum * 0.10).toFixed(2) : '';
         fetch('https://script.google.com/macros/s/AKfycbyKMvxb0iBUTpnlQl2_jL0JPAoOP-XGMjaNVio_F8nrkGuL0jw7EnNqPfKIn5f4s7Dk/exec', {
           method: 'POST',
           body: JSON.stringify({
@@ -180,6 +182,8 @@ export default function App() {
             destino:   data.destinationAddress,
             idioma:    data.clientLanguage,
             municipio: data.clientMunicipality,
+            precio:    precioNum > 0 ? `€${precioNum.toFixed(2)}` : '',
+            comision:  comision ? `€${comision}` : '',
           }),
         }).catch(() => {}); // silencioso — no bloquea la reserva
 
