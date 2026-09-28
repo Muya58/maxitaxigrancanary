@@ -168,6 +168,21 @@ export default function App() {
       });
 
       if (response.ok) {
+        // Enviar datos al Google Sheet para el review bot
+        fetch('https://script.google.com/macros/s/AKfycbyKMvxb0iBUTpnlQl2_jL0JPAoOP-XGMjaNVio_F8nrkGuL0jw7EnNqPfKIn5f4s7Dk/exec', {
+          method: 'POST',
+          body: JSON.stringify({
+            nombre:    data.clientName,
+            whatsapp:  data.clientPhone,
+            email:     data.clientEmail,
+            fecha:     data.dateTime,
+            origen:    data.pickupAddress,
+            destino:   data.destinationAddress,
+            idioma:    data.clientLanguage,
+            municipio: data.clientMunicipality,
+          }),
+        }).catch(() => {}); // silencioso — no bloquea la reserva
+
         setConfirmedBooking({
           ...data,
           price: price,
