@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: 'Does the price include all passengers and luggage?',
-    a: 'Yes. The price shown is per vehicle, not per person. Whether you travel alone or with 8 people, it's the same flat rate. All luggage including oversized items (surfboards, pushchairs, golf bags) is included.',
+    a: "Yes. The price shown is per vehicle, not per person. Whether you travel alone or with 8 people, it's the same flat rate. All luggage including oversized items (surfboards, pushchairs, golf bags) is included.",
   },
   {
     q: 'Is there a surcharge for night arrivals or early departures?',
@@ -39,11 +39,11 @@ const faqs = [
   },
   {
     q: 'How do I get an exact price for my destination?',
-    a: 'Send us your pick-up and drop-off address on WhatsApp (+34 619 735 892). We'll quote you a fixed price within minutes. You can also use the price calculator on the homepage.',
+    a: "Send us your pick-up and drop-off address on WhatsApp (+34 619 735 892). We'll quote you a fixed price within minutes. You can also use the price calculator on the homepage.",
   },
   {
     q: 'What if my destination is not on the list?',
-    a: 'We cover all of Gran Canaria. If your destination isn't listed, message us on WhatsApp with your address and we will quote you a fixed price for your specific route.',
+    a: "We cover all of Gran Canaria. If your destination isn't listed, message us on WhatsApp with your address and we will quote you a fixed price for your specific route.",
   },
 ];
 
