@@ -234,6 +234,68 @@ export default function App() {
         <meta property="og:image" content="https://www.maxitaxigrancanary.com/images/bg-catedral-taxi.jpg" />
         <meta property="og:url" content="https://www.maxitaxigrancanary.com" />
         <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://www.maxitaxigrancanary.com/" />
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': ['LocalBusiness', 'TaxiService'],
+              '@id': 'https://www.maxitaxigrancanary.com/#business',
+              name: 'MaxiTaxi Gran Canaria',
+              description: 'Traslados privados en taxi de 8 plazas al Aeropuerto de Gran Canaria (LPA), Maspalomas, Las Palmas y todo el sur de la isla. Precio cerrado 24h.',
+              url: 'https://www.maxitaxigrancanary.com',
+              telephone: '+34619735892',
+              image: 'https://www.maxitaxigrancanary.com/images/bg-catedral-taxi.jpg',
+              priceRange: '$$',
+              currenciesAccepted: 'EUR',
+              paymentAccepted: 'Cash, Credit Card',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Las Palmas de Gran Canaria',
+                addressRegion: 'Las Palmas',
+                postalCode: '35000',
+                addressCountry: 'ES',
+              },
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: 27.9319,
+                longitude: -15.3866,
+              },
+              openingHoursSpecification: {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                opens: '00:00',
+                closes: '23:59',
+              },
+              areaServed: [
+                { '@type': 'City', name: 'Las Palmas de Gran Canaria' },
+                { '@type': 'City', name: 'Maspalomas' },
+                { '@type': 'City', name: 'Playa del Inglés' },
+                { '@type': 'City', name: 'Puerto Rico de Gran Canaria' },
+                { '@type': 'City', name: 'Mogán' },
+                { '@type': 'City', name: 'Meloneras' },
+              ],
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: 4.9,
+                reviewCount: 500,
+                bestRating: 5,
+                worstRating: 1,
+              },
+              sameAs: [
+                'https://t.me/Maxitaxigrancanaria',
+                'https://wa.me/34619735892',
+              ],
+            },
+            {
+              '@type': 'WebSite',
+              '@id': 'https://www.maxitaxigrancanary.com/#website',
+              url: 'https://www.maxitaxigrancanary.com',
+              name: 'MaxiTaxi Gran Canaria',
+              publisher: { '@id': 'https://www.maxitaxigrancanary.com/#business' },
+            },
+          ],
+        })}</script>
       </Helmet>
       {/* Navigation */}
       <nav 
@@ -889,16 +951,17 @@ export default function App() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {[
-                                  { name: "Maspalomas", img: "/maspalomas.jpg" },
-          { name: "Las Palmas", img: "/laspalmas.jpg" },
-          { name: "Puerto Rico", img: "/puertorico.jpg" },
-          { name: "Meloneras", img: "/meloneras.jpg" },
-          { name: "Arucas", img: "/arucas.jpg" },
-          { name: "Agaete", img: "/agaete.jpg" },
-          { name: "Mogán", img: "/mogan.jpg" }
-
+              { name: "Maspalomas", img: "/maspalomas.jpg", href: "/transfer-maspalomas/" },
+              { name: "Las Palmas", img: "/laspalmas.jpg", href: "/transfer-las-palmas/" },
+              { name: "Puerto Rico", img: "/puertorico.jpg", href: "/transfer-puerto-rico/" },
+              { name: "Meloneras", img: "/meloneras.jpg", href: "/transfer-meloneras/" },
+              { name: "Puerto de Mogán", img: "/mogan.jpg", href: "/transfer-puerto-de-mogan/" },
+              { name: "Taurito", img: "/mogan.jpg", href: "/transfer-taurito/" },
+              { name: "Arucas", img: "/arucas.jpg", href: "/transfer-arucas/" },
+              { name: "Mogán", img: "/mogan.jpg", href: "/transfer-mogan/" },
             ].map((loc, i) => (
-              <motion.div 
+              <motion.a
+                href={loc.href}
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -908,7 +971,7 @@ export default function App() {
               >
                 <img
                   src={loc.img}
-                  alt={`MaxiTaxi Gran Canaria - ${loc.name}`}
+                  alt={`MaxiTaxi Gran Canaria - Transfer ${loc.name}`}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                   loading="lazy"
@@ -919,13 +982,13 @@ export default function App() {
                   <p className="text-brand text-[10px] font-black uppercase tracking-widest mb-1">Traslado Directo</p>
                   <h4 className="text-white font-display text-2xl font-black mb-3">{loc.name}</h4>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300 font-bold">Reserva Online</span>
+                    <span className="text-slate-300 font-bold">Ver precios y detalles</span>
                     <div className="w-10 h-10 bg-brand/20 rounded-full flex items-center justify-center text-brand border border-brand/20 group-hover:bg-brand group-hover:text-white transition-all">
                       <ArrowRight size={16} strokeWidth={3} />
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
 
