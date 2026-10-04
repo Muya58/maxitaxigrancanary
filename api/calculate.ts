@@ -138,8 +138,9 @@ export default function handler(req: any, res: any) {
       }
     }
   } else {
-    distance = 30;
-    duration = 28;
+    // Destino no reconocido — estimación media de ruta turística en Gran Canaria
+    distance = 55;
+    duration = 42;
   }
 
   // Night tariff: 22:00 to 06:00

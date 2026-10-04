@@ -604,8 +604,12 @@ export default function App() {
                               </p>
                             </div>
                             <div className="text-right text-[10px] font-black text-slate-500 uppercase tracking-widest space-y-2">
-                              <div className="flex items-center justify-end gap-2 bg-white/5 px-2 py-1 rounded-md"><MapPin size={12} className="text-brand" /> {price.distanceKm} km</div>
-                              <div className="flex items-center justify-end gap-2 bg-white/5 px-2 py-1 rounded-md"><Clock size={12} className="text-brand" /> {price.durationMins} min</div>
+                              {!price.isEstimate && (
+                                <div className="flex items-center justify-end gap-2 bg-white/5 px-2 py-1 rounded-md"><MapPin size={12} className="text-brand" /> {price.distanceKm} km</div>
+                              )}
+                              {!price.isEstimate && (
+                                <div className="flex items-center justify-end gap-2 bg-white/5 px-2 py-1 rounded-md"><Clock size={12} className="text-brand" /> {price.durationMins} min</div>
+                              )}
                             </div>
                           </div>
                         </motion.div>
