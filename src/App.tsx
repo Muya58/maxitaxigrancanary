@@ -187,11 +187,29 @@ export default function App() {
           }),
         }).catch(() => {}); // silencioso — no bloquea la reserva
 
+        const bookingId = Math.random().toString(36).substring(7).toUpperCase();
+        const priceNum = price ? parseFloat(price.totalPrice) : 0;
+
+        // GA4 conversion event — registra la reserva como "Compra"
+        try {
+          (window as any).gtag('event', 'purchase', {
+            transaction_id: bookingId,
+            value: priceNum,
+            currency: 'EUR',
+            items: [{
+              item_name: `${data.pickupAddress} → ${data.destinationAddress}`,
+              item_category: 'Traslado MaxiTaxi',
+              price: priceNum,
+              quantity: 1,
+            }],
+          });
+        } catch (_) { /* gtag no disponible en dev */ }
+
         setConfirmedBooking({
           ...data,
           price: price,
           estimatedArrival: new Date(Date.now() + 15 * 60000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          trackingId: Math.random().toString(36).substring(7).toUpperCase()
+          trackingId: bookingId,
         });
         setStatus({ type: 'success', message: '¡Reserva confirmada! En breve nos pondremos en contacto contigo.' });
         reset();
