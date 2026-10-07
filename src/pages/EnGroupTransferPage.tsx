@@ -6,13 +6,13 @@ const CANONICAL = 'https://www.maxitaxigrancanary.com/en/8-seater-taxi/';
 const WA_NUMBER = '34619735892';
 
 const destinations = [
-  { name: 'Las Palmas de Gran Canaria', km: 28, mins: 25, price: 35, slug: 'las-palmas' },
-  { name: 'Arucas', km: 32, mins: 30, price: 45, slug: 'arucas' },
-  { name: 'Puerto Rico de Gran Canaria', km: 38, mins: 35, price: 50, slug: 'puerto-rico' },
-  { name: 'Agaete', km: 42, mins: 38, price: 55, slug: 'agaete' },
-  { name: 'Meloneras', km: 44, mins: 38, price: 55, slug: 'meloneras' },
-  { name: 'Maspalomas / Playa del Inglés', km: 47, mins: 40, price: 55, slug: 'maspalomas' },
-  { name: 'Mogán', km: 55, mins: 50, price: 65, slug: 'mogan' },
+  { name: 'Las Palmas de Gran Canaria', km: 46, mins: 38, price: 50, maxPrice: 55, slug: 'las-palmas' },
+  { name: 'Arucas', km: 35, mins: 30, price: 42, maxPrice: 47, slug: 'arucas' },
+  { name: 'Maspalomas / Playa del Inglés', km: 52, mins: 41, price: 56, maxPrice: 61, slug: 'maspalomas' },
+  { name: 'Meloneras', km: 57, mins: 44, price: 60, maxPrice: 65, slug: 'meloneras' },
+  { name: 'Puerto Rico de Gran Canaria', km: 68, mins: 56, price: 70, maxPrice: 75, slug: 'puerto-rico' },
+  { name: 'Agaete / Puerto de las Nieves', km: 63, mins: 68, price: 68, maxPrice: 73, slug: 'agaete' },
+  { name: 'Mogán / Puerto de Mogán', km: 82, mins: 68, price: 83, maxPrice: 88, slug: 'mogan' },
 ];
 
 const useCases = [
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: 'Is it cheaper than booking two standard taxis?',
-    a: 'Significantly cheaper. Two standard taxis to Maspalomas typically cost around €110-120 combined. One MaxiTaxi for the whole group is €55 — fixed price, no haggling, no surprises.',
+    a: 'Significantly cheaper. Two standard taxis to Maspalomas typically cost around €110-120 combined. One MaxiTaxi for the whole group is €56–61 — fixed price, no haggling, no surprises.',
   },
   {
     q: 'Is there an extra charge for large luggage?',
@@ -66,7 +66,7 @@ export default function EnGroupTransferPage() {
     <div className="min-h-screen bg-bg-deep selection:bg-brand/30">
       <Helmet>
         <title>8-Seater Taxi Gran Canaria — Group & Family Airport Transfer | MaxiTaxi</title>
-        <meta name="description" content="8-seater minivan taxi in Gran Canaria. Fixed price group airport transfers for families, friends and sports groups. From €35, 24/7, no luggage surcharge. Book via WhatsApp." />
+        <meta name="description" content="8-seater minivan taxi in Gran Canaria. Fixed price group airport transfers for families, friends and sports groups. From €42, 24/7, no luggage surcharge. Book via WhatsApp." />
       </Helmet>
 
       {/* Navbar */}
@@ -124,7 +124,7 @@ export default function EnGroupTransferPage() {
           8-Seater Taxi <span className="text-brand">Gran Canaria</span><br />Group & Family Airport Transfer
         </h1>
         <p className="text-lg text-slate-400 mb-10 leading-relaxed max-w-2xl">
-          One MaxiTaxi for your whole family or group. Up to 8 passengers with all luggage, fixed price from €35 — cheaper than two standard taxis. Official licensed service, 24 hours a day, flight monitoring included.
+          One MaxiTaxi for your whole family or group. Up to 8 passengers with all luggage, fixed price from €42 — cheaper than two standard taxis. Official licensed service, 24 hours a day, flight monitoring included.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
           <a href={`https://wa.me/${WA_NUMBER}?text=Hello%2C%20I%20need%20an%208-seater%20taxi%20in%20Gran%20Canaria`} onClick={() => trackWa('hero-en-group')} className="bg-brand text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-3 justify-center text-sm shadow-2xl shadow-brand/30">
@@ -183,13 +183,13 @@ export default function EnGroupTransferPage() {
             <div className="card-geometric p-8 rounded-[2rem] border border-brand/30 bg-brand/5">
               <p className="text-[10px] font-black text-brand uppercase tracking-widest mb-4">✓ MaxiTaxi: 1 vehicle</p>
               <div className="space-y-3">
-                <div className="flex justify-between text-sm font-semibold text-slate-300"><span>1 MaxiTaxi (8 people) → Maspalomas</span><span className="text-white">€55</span></div>
+                <div className="flex justify-between text-sm font-semibold text-slate-300"><span>1 MaxiTaxi (8 people) → Maspalomas</span><span className="text-white">€56–61</span></div>
                 <div className="flex justify-between text-sm font-semibold text-slate-300"><span>Whole group travels together</span><span className="text-brand">✓</span></div>
-                <div className="border-t border-white/10 pt-3 flex justify-between font-black text-white"><span>TOTAL 8 people</span><span className="text-brand text-xl">€55</span></div>
+                <div className="border-t border-white/10 pt-3 flex justify-between font-black text-white"><span>TOTAL 8 people</span><span className="text-brand text-xl">€56–61</span></div>
               </div>
             </div>
           </div>
-          <p className="text-center text-slate-500 text-xs font-bold uppercase tracking-widest">Save up to €65 on a single journey</p>
+          <p className="text-center text-slate-500 text-xs font-bold uppercase tracking-widest">Save up to €60 on a single journey</p>
         </div>
       </section>
 
@@ -217,7 +217,7 @@ export default function EnGroupTransferPage() {
                     <td className="py-4 px-4 font-semibold text-white">{d.name}</td>
                     <td className="py-4 px-4 text-center text-slate-400">{d.km} km</td>
                     <td className="py-4 px-4 text-center text-slate-400">{d.mins} min</td>
-                    <td className="py-4 px-4 text-right font-black text-brand text-lg">€{d.price}</td>
+                    <td className="py-4 px-4 text-right font-black text-brand text-lg">€{d.price}–{d.maxPrice}</td>
                   </tr>
                 ))}
               </tbody>

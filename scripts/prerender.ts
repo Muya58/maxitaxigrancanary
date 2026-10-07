@@ -378,7 +378,7 @@ function buildEnGroupPageHead(): string {
 
   return `
     <title>8-Seater Taxi Gran Canaria — Group & Family Airport Transfer | MaxiTaxi</title>
-    <meta name="description" content="8-seater minivan taxi in Gran Canaria. Fixed price group airport transfers for families, friends and sports groups. From €35, 24/7, no luggage surcharge. Book via WhatsApp." />
+    <meta name="description" content="8-seater minivan taxi in Gran Canaria. Fixed price group airport transfers for families, friends and sports groups. From €42, 24/7, no luggage surcharge. Book via WhatsApp." />
     <link rel="canonical" href="${canonical}" />
     <link rel="alternate" hreflang="es" href="${canonicalEs}" />
     <link rel="alternate" hreflang="en" href="${canonical}" />
