@@ -6,13 +6,13 @@ const CANONICAL = 'https://www.maxitaxigrancanary.com/en/prices/';
 const WA_NUMBER = '34619735892';
 
 const destinations = [
-  { name: 'Las Palmas de Gran Canaria', area: 'Las Palmas Norte', km: 28, mins: 25, price: 35, note: 'Centro, Triana, Las Canteras, Sta. Catalina' },
-  { name: 'Arucas', area: 'Las Palmas Norte', km: 32, mins: 30, price: 45, note: 'Arucas town, rum museum area' },
-  { name: 'Puerto Rico de Gran Canaria', area: 'South', km: 38, mins: 35, price: 50, note: 'Puerto Rico beach, Amadores, marina' },
-  { name: 'Agaete / Puerto de las Nieves', area: 'Northwest', km: 42, mins: 38, price: 55, note: 'Ferry terminal, Agaete valley' },
-  { name: 'Meloneras', area: 'South', km: 44, mins: 38, price: 55, note: 'Lopesan Costa Meloneras, promenade' },
-  { name: 'Maspalomas / Playa del Inglés', area: 'South', km: 47, mins: 40, price: 55, note: 'Maspalomas dunes, Yumbo, Kasbah' },
-  { name: 'Mogán / Puerto de Mogán', area: 'South', km: 55, mins: 50, price: 65, note: '"Little Venice", Arguineguín' },
+  { name: 'Las Palmas de Gran Canaria', area: 'Las Palmas Norte', km: 46, mins: 38, price: 50, maxPrice: 55, note: 'Centro, Triana, Las Canteras, Sta. Catalina' },
+  { name: 'Arucas', area: 'Las Palmas Norte', km: 35, mins: 30, price: 42, maxPrice: 47, note: 'Arucas town, rum museum area' },
+  { name: 'Maspalomas / Playa del Inglés', area: 'South', km: 52, mins: 41, price: 56, maxPrice: 61, note: 'Maspalomas dunes, Yumbo, Kasbah' },
+  { name: 'Meloneras', area: 'South', km: 57, mins: 44, price: 60, maxPrice: 65, note: 'Lopesan Costa Meloneras, promenade' },
+  { name: 'Puerto Rico de Gran Canaria', area: 'South', km: 68, mins: 56, price: 70, maxPrice: 75, note: 'Puerto Rico beach, Amadores, marina' },
+  { name: 'Agaete / Puerto de las Nieves', area: 'Northwest', km: 63, mins: 68, price: 68, maxPrice: 73, note: 'Ferry terminal, Agaete valley' },
+  { name: 'Puerto de Mogán / Mogán', area: 'South', km: 82, mins: 68, price: 83, maxPrice: 88, note: '"Little Venice", Arguineguín' },
 ];
 
 const included = [
@@ -68,7 +68,7 @@ export default function PricesPage() {
     <div className="min-h-screen bg-bg-deep selection:bg-brand/30">
       <Helmet>
         <title>Gran Canaria Taxi Prices 2026 | Fixed Airport Transfer Rates | MaxiTaxi</title>
-        <meta name="description" content="Gran Canaria airport taxi prices 2026. Fixed rates from €35 (Las Palmas) to €65 (Mogán). 8-seater, all luggage included, 24/7. No meters, no surprises." />
+        <meta name="description" content="Gran Canaria airport taxi prices 2026. Fixed rates from €42 (Arucas) to €83 (Mogán). 8-seater, all luggage included, 24/7. No meters, no surprises." />
       </Helmet>
 
       {/* Navbar */}
@@ -167,7 +167,7 @@ export default function PricesPage() {
                     <td className="py-5 px-4 text-center text-slate-400 font-semibold">{d.km} km</td>
                     <td className="py-5 px-4 text-center text-slate-400 font-semibold">{d.mins} min</td>
                     <td className="py-5 px-6 text-right">
-                      <span className="font-black text-brand text-2xl">€{d.price}</span>
+                      <span className="font-black text-brand text-2xl">€{d.price}–{d.maxPrice}</span>
                     </td>
                   </tr>
                 ))}
@@ -198,10 +198,10 @@ export default function PricesPage() {
               </thead>
               <tbody>
                 {[
-                  { dest: 'Las Palmas', price: 35 },
-                  { dest: 'Maspalomas', price: 55 },
-                  { dest: 'Puerto Rico', price: 50 },
-                  { dest: 'Mogán', price: 65 },
+                  { dest: 'Las Palmas', price: 50 },
+                  { dest: 'Maspalomas', price: 56 },
+                  { dest: 'Puerto Rico', price: 70 },
+                  { dest: 'Mogán', price: 83 },
                 ].map((r, i) => (
                   <tr key={i} className="border-b border-white/5 hover:bg-white/2 transition-colors">
                     <td className="py-4 px-6 font-bold text-white">{r.dest}</td>

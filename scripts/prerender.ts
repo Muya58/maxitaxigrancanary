@@ -297,10 +297,11 @@ function buildPricesPageHead(): string {
           '@type': 'OfferCatalog',
           name: 'Gran Canaria Airport Transfer Prices',
           itemListElement: [
-            { '@type': 'Offer', name: 'Airport Transfer to Las Palmas', priceSpecification: { '@type': 'PriceSpecification', price: 35, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
-            { '@type': 'Offer', name: 'Airport Transfer to Maspalomas', priceSpecification: { '@type': 'PriceSpecification', price: 55, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
-            { '@type': 'Offer', name: 'Airport Transfer to Puerto Rico', priceSpecification: { '@type': 'PriceSpecification', price: 50, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
-            { '@type': 'Offer', name: 'Airport Transfer to Mogán', priceSpecification: { '@type': 'PriceSpecification', price: 65, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Las Palmas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 50, maxPrice: 55, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Arucas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 42, maxPrice: 47, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Maspalomas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 56, maxPrice: 61, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Puerto Rico', priceSpecification: { '@type': 'PriceSpecification', minPrice: 70, maxPrice: 75, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Mogán', priceSpecification: { '@type': 'PriceSpecification', minPrice: 83, maxPrice: 88, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
           ],
         },
       },
@@ -317,7 +318,7 @@ function buildPricesPageHead(): string {
           { '@type': 'Question', name: 'Are Gran Canaria taxi prices fixed or metered?', acceptedAnswer: { '@type': 'Answer', text: 'With MaxiTaxi, all prices are fixed in advance. You agree the price before you travel — no meter, no surprises.' } },
           { '@type': 'Question', name: 'Does the price include all passengers and luggage?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The price shown is per vehicle, not per person. Up to 8 passengers and all luggage is included at no extra cost.' } },
           { '@type': 'Question', name: 'Is there a surcharge for night arrivals?', acceptedAnswer: { '@type': 'Answer', text: 'No. MaxiTaxi operates 24/7 at the same prices — no night surcharge, no weekend surcharge, no holiday surcharge.' } },
-          { '@type': 'Question', name: 'How much does a taxi from Gran Canaria Airport to Maspalomas cost?', acceptedAnswer: { '@type': 'Answer', text: 'A fixed-price transfer from Gran Canaria Airport (LPA) to Maspalomas with MaxiTaxi costs €55 for the whole vehicle (up to 8 passengers).' } },
+          { '@type': 'Question', name: 'How much does a taxi from Gran Canaria Airport to Maspalomas cost?', acceptedAnswer: { '@type': 'Answer', text: 'A fixed-price transfer from Gran Canaria Airport (LPA) to Maspalomas with MaxiTaxi costs €56–61 for the whole vehicle (up to 8 passengers).' } },
         ],
       },
     ],
@@ -325,12 +326,12 @@ function buildPricesPageHead(): string {
 
   return `
     <title>Gran Canaria Airport Taxi Prices 2026 | Fixed Transfer Rates | MaxiTaxi</title>
-    <meta name="description" content="Gran Canaria airport taxi prices 2026. Fixed rates from €35 (Las Palmas) to €65 (Mogán). 8-seater, all luggage included, 24/7. No meters, no surprises." />
+    <meta name="description" content="Gran Canaria airport taxi prices 2026. Fixed rates from €42 (Arucas) to €83 (Mogán). 8-seater, all luggage included, 24/7. No meters, no surprises." />
     <link rel="canonical" href="${canonical}" />
     <link rel="alternate" hreflang="en" href="${canonical}" />
     <link rel="alternate" hreflang="x-default" href="${canonical}" />
     <meta property="og:title" content="Gran Canaria Airport Taxi Prices 2026 | MaxiTaxi" />
-    <meta property="og:description" content="Fixed airport taxi prices. Las Palmas €35, Maspalomas €55, Puerto Rico €50, Mogán €65. Up to 8 passengers, same price." />
+    <meta property="og:description" content="Fixed airport taxi prices. Las Palmas €50–55, Maspalomas €56–61, Puerto Rico €70–75, Mogán €83–88. Up to 8 passengers, same price." />
     <meta property="og:url" content="${canonical}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://www.maxitaxigrancanary.com/maspalomas.jpg" />
