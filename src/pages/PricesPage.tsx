@@ -6,12 +6,13 @@ const CANONICAL = 'https://www.maxitaxigrancanary.com/en/prices/';
 const WA_NUMBER = '34619735892';
 
 const destinations = [
-  { name: 'Las Palmas de Gran Canaria', area: 'Las Palmas Norte', km: 46, mins: 38, price: 50, maxPrice: 55, note: 'Centro, Triana, Las Canteras, Sta. Catalina' },
-  { name: 'Arucas', area: 'Las Palmas Norte', km: 35, mins: 30, price: 42, maxPrice: 47, note: 'Arucas town, rum museum area' },
-  { name: 'Maspalomas / Playa del Inglés', area: 'South', km: 52, mins: 41, price: 56, maxPrice: 61, note: 'Maspalomas dunes, Yumbo, Kasbah' },
-  { name: 'Meloneras', area: 'South', km: 57, mins: 44, price: 60, maxPrice: 65, note: 'Lopesan Costa Meloneras, promenade' },
+  { name: 'Las Palmas de Gran Canaria', area: 'Las Palmas Norte', km: 46, mins: 38, price: 48, maxPrice: 50, note: 'Centro, Triana, Las Canteras, Sta. Catalina' },
+  { name: 'Arucas', area: 'Las Palmas Norte', km: 35, mins: 30, price: 50, maxPrice: 55, note: 'Arucas town, rum museum area' },
+  { name: 'Playa del Inglés', area: 'South', km: 50, mins: 40, price: 45, maxPrice: 52, note: 'Yumbo centre, San Agustín beach' },
+  { name: 'Maspalomas', area: 'South', km: 52, mins: 41, price: 50, maxPrice: 55, note: 'Maspalomas dunes, Kasbah, Holiday World' },
+  { name: 'Meloneras', area: 'South', km: 57, mins: 44, price: 55, maxPrice: 60, note: 'Lopesan Costa Meloneras, promenade' },
   { name: 'Puerto Rico de Gran Canaria', area: 'South', km: 68, mins: 56, price: 70, maxPrice: 75, note: 'Puerto Rico beach, Amadores, marina' },
-  { name: 'Agaete / Puerto de las Nieves', area: 'Northwest', km: 63, mins: 68, price: 68, maxPrice: 73, note: 'Ferry terminal, Agaete valley' },
+  { name: 'Agaete / Puerto de las Nieves', area: 'Northwest', km: 63, mins: 68, price: 70, maxPrice: 75, note: 'Ferry terminal, Agaete valley' },
   { name: 'Puerto de Mogán / Mogán', area: 'South', km: 82, mins: 68, price: 83, maxPrice: 88, note: '"Little Venice", Arguineguín' },
 ];
 

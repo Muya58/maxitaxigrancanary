@@ -254,7 +254,7 @@ function buildGroupPageHead(): string {
         '@type': 'FAQPage',
         mainEntity: [
           { '@type': 'Question', name: '¿Cuántas personas caben en un MaxiTaxi?', acceptedAnswer: { '@type': 'Answer', text: 'Nuestros vehículos tienen 8 plazas de pasajero más espacio para el equipaje de todo el grupo. Caben maletas grandes, sillitas de bebé, tablas de surf y similares sin problema.' } },
-          { '@type': 'Question', name: '¿Es más barato que coger dos taxis normales?', acceptedAnswer: { '@type': 'Answer', text: 'Mucho más barato. Dos taxis estándar a Maspalomas cuestan alrededor de 110-120€ en total. Un MaxiTaxi para todo el grupo sale por 55€ — precio fijo.' } },
+          { '@type': 'Question', name: '¿Es más barato que coger dos taxis normales?', acceptedAnswer: { '@type': 'Answer', text: 'Mucho más barato. Dos taxis estándar a Maspalomas cuestan alrededor de 110-120€ en total. Un MaxiTaxi para todo el grupo sale por 50–55€ — precio fijo.' } },
           { '@type': 'Question', name: '¿Tengo que pagar extra por el equipaje grande?', acceptedAnswer: { '@type': 'Answer', text: 'No. El precio es por vehículo, no por maleta. Tablas de surf, bicicletas plegadas, sillitas de bebé y maletas de gran tamaño van incluidas en el precio.' } },
           { '@type': 'Question', name: '¿El conductor espera si el vuelo se retrasa?', acceptedAnswer: { '@type': 'Answer', text: 'Sí. Monitorizamos tu número de vuelo en tiempo real y ajustamos la hora de recogida automáticamente. No cobramos esperas por retrasos de vuelo.' } },
         ],
@@ -297,10 +297,13 @@ function buildPricesPageHead(): string {
           '@type': 'OfferCatalog',
           name: 'Gran Canaria Airport Transfer Prices',
           itemListElement: [
-            { '@type': 'Offer', name: 'Airport Transfer to Las Palmas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 50, maxPrice: 55, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
-            { '@type': 'Offer', name: 'Airport Transfer to Arucas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 42, maxPrice: 47, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
-            { '@type': 'Offer', name: 'Airport Transfer to Maspalomas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 56, maxPrice: 61, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Las Palmas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 48, maxPrice: 50, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Arucas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 50, maxPrice: 55, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Playa del Inglés', priceSpecification: { '@type': 'PriceSpecification', minPrice: 45, maxPrice: 52, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Maspalomas', priceSpecification: { '@type': 'PriceSpecification', minPrice: 50, maxPrice: 55, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Meloneras', priceSpecification: { '@type': 'PriceSpecification', minPrice: 55, maxPrice: 60, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
             { '@type': 'Offer', name: 'Airport Transfer to Puerto Rico', priceSpecification: { '@type': 'PriceSpecification', minPrice: 70, maxPrice: 75, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
+            { '@type': 'Offer', name: 'Airport Transfer to Agaete', priceSpecification: { '@type': 'PriceSpecification', minPrice: 70, maxPrice: 75, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
             { '@type': 'Offer', name: 'Airport Transfer to Mogán', priceSpecification: { '@type': 'PriceSpecification', minPrice: 83, maxPrice: 88, priceCurrency: 'EUR', eligibleQuantity: { '@type': 'QuantitativeValue', maxValue: 8, unitCode: 'C62' } } },
           ],
         },
@@ -318,7 +321,7 @@ function buildPricesPageHead(): string {
           { '@type': 'Question', name: 'Are Gran Canaria taxi prices fixed or metered?', acceptedAnswer: { '@type': 'Answer', text: 'With MaxiTaxi, all prices are fixed in advance. You agree the price before you travel — no meter, no surprises.' } },
           { '@type': 'Question', name: 'Does the price include all passengers and luggage?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The price shown is per vehicle, not per person. Up to 8 passengers and all luggage is included at no extra cost.' } },
           { '@type': 'Question', name: 'Is there a surcharge for night arrivals?', acceptedAnswer: { '@type': 'Answer', text: 'No. MaxiTaxi operates 24/7 at the same prices — no night surcharge, no weekend surcharge, no holiday surcharge.' } },
-          { '@type': 'Question', name: 'How much does a taxi from Gran Canaria Airport to Maspalomas cost?', acceptedAnswer: { '@type': 'Answer', text: 'A fixed-price transfer from Gran Canaria Airport (LPA) to Maspalomas with MaxiTaxi costs €56–61 for the whole vehicle (up to 8 passengers).' } },
+          { '@type': 'Question', name: 'How much does a taxi from Gran Canaria Airport to Maspalomas cost?', acceptedAnswer: { '@type': 'Answer', text: 'A fixed-price transfer from Gran Canaria Airport (LPA) to Maspalomas with MaxiTaxi costs €50–55 for the whole vehicle (up to 8 passengers).' } },
         ],
       },
     ],
@@ -326,12 +329,12 @@ function buildPricesPageHead(): string {
 
   return `
     <title>Gran Canaria Airport Taxi Prices 2026 | Fixed Transfer Rates | MaxiTaxi</title>
-    <meta name="description" content="Gran Canaria airport taxi prices 2026. Fixed rates from €42 (Arucas) to €83 (Mogán). 8-seater, all luggage included, 24/7. No meters, no surprises." />
+    <meta name="description" content="Gran Canaria airport taxi prices 2026. Fixed rates from €45 (Playa del Inglés) to €83 (Mogán). 8-seater, all luggage included, 24/7. No meters, no surprises." />
     <link rel="canonical" href="${canonical}" />
     <link rel="alternate" hreflang="en" href="${canonical}" />
     <link rel="alternate" hreflang="x-default" href="${canonical}" />
     <meta property="og:title" content="Gran Canaria Airport Taxi Prices 2026 | MaxiTaxi" />
-    <meta property="og:description" content="Fixed airport taxi prices. Las Palmas €50–55, Maspalomas €56–61, Puerto Rico €70–75, Mogán €83–88. Up to 8 passengers, same price." />
+    <meta property="og:description" content="Fixed airport taxi prices. Las Palmas €48–50, Maspalomas €50–55, Puerto Rico €70–75, Mogán €83–88. Up to 8 passengers, same price." />
     <meta property="og:url" content="${canonical}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://www.maxitaxigrancanary.com/maspalomas.jpg" />
@@ -368,7 +371,7 @@ function buildEnGroupPageHead(): string {
         '@type': 'FAQPage',
         mainEntity: [
           { '@type': 'Question', name: 'How many people fit in a MaxiTaxi?', acceptedAnswer: { '@type': 'Answer', text: 'Our 8-seater minivans have room for up to 8 passengers plus their luggage. Large suitcases, pushchairs, surfboards and sports equipment all fit without additional charges.' } },
-          { '@type': 'Question', name: 'Is it cheaper than booking two standard taxis?', acceptedAnswer: { '@type': 'Answer', text: 'Significantly cheaper. Two standard taxis to Maspalomas typically cost around €110-120 combined. One MaxiTaxi for the whole group is €55 — fixed price, no haggling.' } },
+          { '@type': 'Question', name: 'Is it cheaper than booking two standard taxis?', acceptedAnswer: { '@type': 'Answer', text: 'Significantly cheaper. Two standard taxis to Maspalomas typically cost around €110-120 combined. One MaxiTaxi for the whole group is €50–55 — fixed price, no haggling.' } },
           { '@type': 'Question', name: 'Is there an extra charge for large luggage?', acceptedAnswer: { '@type': 'Answer', text: 'No. The price is per vehicle, not per bag. Surfboards, folded bikes, pushchairs and oversized cases are all included.' } },
           { '@type': 'Question', name: 'Will the driver wait if our flight is delayed?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. We monitor your flight number in real time and adjust pick-up time automatically. No waiting charges for flight delays.' } },
         ],
@@ -378,7 +381,7 @@ function buildEnGroupPageHead(): string {
 
   return `
     <title>8-Seater Taxi Gran Canaria — Group & Family Airport Transfer | MaxiTaxi</title>
-    <meta name="description" content="8-seater minivan taxi in Gran Canaria. Fixed price group airport transfers for families, friends and sports groups. From €42, 24/7, no luggage surcharge. Book via WhatsApp." />
+    <meta name="description" content="8-seater minivan taxi in Gran Canaria. Fixed price group airport transfers for families, friends and sports groups. From €45, 24/7, no luggage surcharge. Book via WhatsApp." />
     <link rel="canonical" href="${canonical}" />
     <link rel="alternate" hreflang="es" href="${canonicalEs}" />
     <link rel="alternate" hreflang="en" href="${canonical}" />
